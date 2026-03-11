@@ -11,159 +11,159 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="noise-layer" aria-hidden="true"></div>
+    <div class="film-grain" aria-hidden="true"></div>
 
     <header class="site-header">
-      <div class="container nav-wrap">
-        <a href="#top" class="brand">
+      <div class="container header-inner">
+        <a href="#top" class="brand" aria-label="TYB Holdings home">
           <span class="brand-mark">TYB</span>
-          <span class="brand-text">Holdings</span>
+          <span class="brand-text">HOLDINGS</span>
         </a>
+
         <button
           class="menu-toggle"
+          type="button"
           aria-label="Toggle navigation"
           aria-expanded="false"
           aria-controls="site-nav"
         >
-          <span></span><span></span><span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
+
         <nav id="site-nav" class="site-nav">
           <a href="#about">About</a>
           <a href="#sectors">Sectors</a>
           <a href="#network">Network</a>
           <a href="#sustainability">Sustainability</a>
-          <a href="#contact">Contact</a>
+          <a href="#contact" class="nav-contact">Contact</a>
         </nav>
       </div>
     </header>
 
     <main id="top">
       <section class="hero section">
-        <div class="container hero-grid">
-          <div class="hero-copy reveal">
-            <p class="eyebrow">Bangkok-Based Trading & Investment</p>
+        <div class="container hero-layout">
+          <div class="hero-copy" data-reveal>
+            <p class="kicker">Bangkok-Based Trading &amp; Investment</p>
             <h1>Resource Trade Built for Cross-Border Growth.</h1>
             <p class="lede">
-              TYB Holdings connects Southeast Asia's resource strength with
-              global demand through disciplined sourcing, strategic
-              partnerships, and sustainable market expansion.
+              TYB Holdings connects Southeast Asia's resource strength with global demand through disciplined sourcing,
+              strategic partnerships, and sustainable market expansion.
             </p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#contact">Start a Partnership</a>
-              <a class="btn btn-ghost" href="#sectors">Explore Products</a>
+              <a class="btn btn-solid" href="#contact">Start a Partnership</a>
+              <a class="btn btn-outline" href="#sectors">Explore Products</a>
             </div>
           </div>
 
-          <aside class="hero-panel reveal-delay">
+          <aside class="hero-panel" data-reveal>
             <h2>Since 2023</h2>
             <p>
-              We have expanded from regional commodity trade into international
-              markets spanning Asia and beyond.
+              We have expanded from regional commodity trade into international markets spanning Asia and beyond.
             </p>
-            <div class="stats">
-              <article>
+            <ul class="hero-stats" aria-label="TYB key metrics">
+              <li>
                 <strong>8</strong>
                 <span>Core commodity lines</span>
-              </article>
-              <article>
+              </li>
+              <li>
                 <strong>5+</strong>
                 <span>Trade segments</span>
-              </article>
-              <article>
+              </li>
+              <li>
                 <strong>Asia+</strong>
                 <span>Cross-border corridors</span>
-              </article>
-            </div>
+              </li>
+            </ul>
           </aside>
         </div>
       </section>
 
       <section id="about" class="section">
-        <div class="container split">
-          <div class="section-title reveal">
-            <p class="eyebrow">Who We Are</p>
+        <div class="container two-column">
+          <div class="section-intro" data-reveal>
+            <p class="kicker">Who We Are</p>
             <h2>Regional Insight. Global Outlook.</h2>
           </div>
-          <div class="section-copy reveal-delay">
+          <div class="copy-stack" data-reveal>
             <p>
-              TYB Holdings is a Bangkok-based trading and investment company
-              specializing in metals, rubber, chemicals, commodities, and
-              cross-border commerce.
+              TYB Holdings is a Bangkok-based trading and investment company specializing in metals, rubber, chemicals,
+              commodities, and cross-border commerce.
             </p>
             <p>
-              With trusted regional partners and disciplined execution, we
-              create reliable supply pathways that support industrial buyers,
-              processors, and distributors in evolving global markets.
+              With trusted regional partners and disciplined execution, we create reliable supply pathways that support
+              industrial buyers, processors, and distributors in evolving global markets.
             </p>
           </div>
         </div>
       </section>
 
-      <section id="sectors" class="section sectors">
+      <section id="sectors" class="section section-dark">
         <div class="container">
-          <div class="section-title reveal">
-            <p class="eyebrow">What We Trade</p>
+          <div class="section-intro" data-reveal>
+            <p class="kicker">What We Trade</p>
             <h2>High-Value Commodities Across Strategic Sectors</h2>
           </div>
-          <div class="card-grid">
-            <article class="sector-card reveal">
+
+          <div class="sector-grid">
+            <article class="sector-card" data-reveal>
+              <p class="sector-index">01</p>
               <h3>Metals</h3>
               <p>Copper, aluminum, zinc, and tungsten for industrial demand.</p>
             </article>
-            <article class="sector-card reveal-delay">
+            <article class="sector-card" data-reveal>
+              <p class="sector-index">02</p>
               <h3>Rubber</h3>
-              <p>
-                Natural rubber flows for manufacturing and regional export
-                channels.
-              </p>
+              <p>Natural rubber flows for manufacturing and regional export channels.</p>
             </article>
-            <article class="sector-card reveal">
+            <article class="sector-card" data-reveal>
+              <p class="sector-index">03</p>
               <h3>Chemicals</h3>
-              <p>
-                Reliable chemical sourcing with quality-focused partner
-                networks.
-              </p>
+              <p>Reliable chemical sourcing with quality-focused partner networks.</p>
             </article>
-            <article class="sector-card reveal-delay">
+            <article class="sector-card" data-reveal>
+              <p class="sector-index">04</p>
               <h3>Palm Oil</h3>
               <p>Structured commodity movement aligned to demand cycles.</p>
             </article>
-            <article class="sector-card reveal">
+            <article class="sector-card" data-reveal>
+              <p class="sector-index">05</p>
               <h3>Agricultural Products</h3>
-              <p>
-                Regional agricultural trade with logistics-ready procurement.
-              </p>
+              <p>Regional agricultural trade with logistics-ready procurement.</p>
             </article>
-            <article class="sector-card reveal-delay">
+            <article class="sector-card" data-reveal>
+              <p class="sector-index">06</p>
               <h3>Cross-Border Commerce</h3>
-              <p>
-                Transaction and logistics execution across Asian trade routes.
-              </p>
+              <p>Transaction and logistics execution across Asian trade routes.</p>
             </article>
           </div>
         </div>
       </section>
 
       <section id="network" class="section">
-        <div class="container network-wrap">
-          <div class="section-title reveal">
-            <p class="eyebrow">Trade Network</p>
+        <div class="container network-layout">
+          <div data-reveal>
+            <p class="kicker">Trade Network</p>
             <h2>Building Sustainable Corridors Across Asia and Beyond</h2>
           </div>
-          <div class="network-visual reveal-delay" aria-hidden="true">
+
+          <div class="network-map" data-reveal aria-hidden="true">
             <span class="node node-bkk">Bangkok</span>
             <span class="node node-sea">Southeast Asia</span>
             <span class="node node-global">Global Markets</span>
-            <span class="line line-one"></span>
-            <span class="line line-two"></span>
+            <span class="route route-one"></span>
+            <span class="route route-two"></span>
           </div>
-          <div class="ticker" aria-label="Commodity focus areas">
+
+          <div class="ticker" aria-label="Commodity focus areas" data-reveal>
             <div class="ticker-track">
               <span>Copper</span>
               <span>Aluminum</span>
@@ -186,54 +186,52 @@
         </div>
       </section>
 
-      <section id="sustainability" class="section sustainability">
-        <div class="container split">
-          <div class="section-title reveal">
-            <p class="eyebrow">Our Commitment</p>
+      <section id="sustainability" class="section section-dark">
+        <div class="container">
+          <div class="section-intro" data-reveal>
+            <p class="kicker">Our Commitment</p>
             <h2>Growth with Long-Term Market Responsibility</h2>
           </div>
-          <div class="pillars">
-            <article class="pillar reveal">
+
+          <div class="pillar-grid">
+            <article class="pillar" data-reveal>
               <h3>Partner Integrity</h3>
               <p>
-                We prioritize vetted partners and transparent trade practices
-                across every transaction.
+                We prioritize vetted partners and transparent trade practices across every transaction.
               </p>
             </article>
-            <article class="pillar reveal-delay">
+            <article class="pillar" data-reveal>
               <h3>Supply Stability</h3>
               <p>
-                We reduce volatility by combining regional intelligence with
-                disciplined sourcing.
+                We reduce volatility by combining regional intelligence with disciplined sourcing.
               </p>
             </article>
-            <article class="pillar reveal">
+            <article class="pillar" data-reveal>
               <h3>Sustainable Networks</h3>
               <p>
-                We are building trade systems designed to endure environmental
-                and market pressures.
+                We are building trade systems designed to endure environmental and market pressures.
               </p>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="contact" class="section contact">
-        <div class="container contact-panel reveal">
-          <h2>Partner with TYB Holdings</h2>
-          <p>
-            Connect with our team to discuss sourcing, investment, and
-            cross-border trade opportunities.
-          </p>
-          <a class="btn btn-primary" href="mailto:cenquiries@tyb-int.com">
-            enquiries@tyb-int.com
-          </a>
+      <section id="contact" class="section">
+        <div class="container" data-reveal>
+          <div class="contact-panel">
+            <p class="kicker">Contact</p>
+            <h2>Partner with TYB Holdings</h2>
+            <p>
+              Connect with our team to discuss sourcing, investment, and cross-border trade opportunities.
+            </p>
+            <a class="btn btn-solid" href="mailto:cenquiries@tyb-int.com">enquiries@tyb-int.com</a>
+          </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="container">
+      <div class="container footer-inner">
         <p>TYB Holdings | Bangkok, Thailand</p>
         <p>&copy; <span id="year"></span> TYB Holdings. All rights reserved.</p>
       </div>
