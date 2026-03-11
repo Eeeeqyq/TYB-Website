@@ -1,7 +1,7 @@
 # TYB Website
 
-Frontend-only TYB site refresh.
-Same content, cleaner Blackstone-ish look.
+Frontend-only TYB site.
+https://eeeeqyq.github.io/TYB-Website/  
 
 ## Stack
 
