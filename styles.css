@@ -553,3 +553,186 @@ h3 {
     scroll-behavior: auto !important;
   }
 }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   CINEMATIC HERO
+═══════════════════════════════════════════════════════════════ */
+
+.cinematic-hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  perspective: 1500px;
+}
+
+/* ── Environment ── */
+.ch-film-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%25" height="100%25" filter="url(%23n)"/></svg>');
+}
+
+.ch-bg-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-size: 60px 60px;
+  background-image:
+    linear-gradient(to right,  rgba(17,17,17,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17,17,17,0.06) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+  will-change: transform, opacity, filter;
+}
+
+/* ── Language overlay (top-right of cinematic hero) ── */
+.ch-lang-overlay {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.5rem;
+  z-index: 30;
+}
+
+.ch-lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.55rem;
+  background: transparent;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-family: inherit;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: border-color 160ms ease, color 160ms ease;
+}
+
+.ch-lang-btn:hover {
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+
+.ch-lang-chev {
+  transition: transform 200ms ease;
+}
+
+.ch-lang-btn[aria-expanded="true"] .ch-lang-chev {
+  transform: rotate(180deg);
+}
+
+.ch-lang-drop {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 4px);
+  min-width: 110px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  z-index: 100;
+}
+
+.ch-lang-opt {
+  display: block;
+  width: 100%;
+  padding: 0.55rem 0.85rem;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  font-family: inherit;
+  font-size: 0.78rem;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 140ms ease;
+}
+
+.ch-lang-opt:hover        { background: var(--surface-alt); }
+.ch-lang-opt--active      { color: var(--accent); font-weight: 600; }
+
+/* ── Scroll hint ── */
+.ch-scroll-hint {
+  position: absolute;
+  bottom: 2.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--muted);
+  pointer-events: none;
+  user-select: none;
+}
+
+.ch-scroll-text {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.ch-scroll-hint svg {
+  animation: ch-bounce 1.8s ease-in-out infinite;
+}
+
+@keyframes ch-bounce {
+  0%, 100% { transform: translateY(0);   opacity: 1;    }
+  50%       { transform: translateY(7px); opacity: 0.45; }
+}
+
+/* ── Hero taglines ── */
+.ch-hero-text {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100vw;
+  padding: 0 1.5rem;
+  will-change: transform, opacity, filter;
+}
+
+.ch-text-track,
+.ch-text-days {
+  margin: 0;
+  font-family: "Archivo", "Avenir Next", "Segoe UI", sans-serif;
+  font-size: clamp(2.4rem, 8vw, 6rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.ch-text-track {
+  color: var(--ink);
+  text-shadow:
+    0 10px 30px rgba(17,17,17,0.18),
+    0 2px 4px rgba(17,17,17,0.08);
+  visibility: hidden; /* GSAP autoAlpha controls this */
+}
+
+.ch-text-days {
+  background: linear-gradient(180deg, var(--ink) 0%, rgba(17,17,17,0.35) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transform: translateZ(0);
+  filter:
+    drop-shadow(0 10px 20px rgba(17,17,17,0.14))
+    drop-shadow(0 2px 4px rgba(17,17,17,0.08));
+}
+

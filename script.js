@@ -62,6 +62,21 @@ const translations = {
 
     "footer.location": "TYB International | Bangkok, Thailand",
     "footer.rights": "TYB International. All rights reserved.",
+
+    "ch.tagline1":   "Trade Built for",
+    "ch.tagline2":   "Cross-Border Growth.",
+    "ch.ctaHeading": "Start Trading.",
+    "ch.ctaDesc":    "Partner with TYB International for reliable commodity trade across Southeast Asia and global markets.",
+    "ch.ctaBtn1":    "Start a Partnership",
+    "ch.ctaBtn2":    "Explore Products",
+    "ch.metricLabel":"Trade Partners",
+    "ch.cardHeading":"Global Commodity Trade, Redefined.",
+    "ch.cardDesc":   "TYB International connects Southeast Asia\u2019s resource strength with global demand through disciplined sourcing, strategic partnerships, and sustainable market expansion.",
+    "ch.badge1Title":"New Trade Route",
+    "ch.badge1Sub":  "Milestone reached",
+    "ch.badge2Title":"Partner Update",
+    "ch.badge2Sub":  "Delivered successfully",
+    "ch.scrollHint": "Scroll",
   },
 
   zh: {
@@ -126,6 +141,21 @@ const translations = {
 
     "footer.location": "TYB国际 | 泰国曼谷",
     "footer.rights": "TYB国际。版权所有。",
+
+    "ch.tagline1":   "为跨境而生的",
+    "ch.tagline2":   "资源贸易。",
+    "ch.ctaHeading": "开始合作。",
+    "ch.ctaDesc":    "与TYB国际合作，实现可靠的东南亚及全球大宗商品贸易。",
+    "ch.ctaBtn1":    "开始合作",
+    "ch.ctaBtn2":    "探索产品",
+    "ch.metricLabel":"贸易合作伙伴",
+    "ch.cardHeading":"全球大宗商品贸易，重新定义。",
+    "ch.cardDesc":   "TYB国际连接东南亚的资源优势与全球需求，通过严格的采购、战略合作伙伴关系和可持续的市场扩张推动发展。",
+    "ch.badge1Title":"新贸易路线",
+    "ch.badge1Sub":  "里程碑达成",
+    "ch.badge2Title":"合作伙伴动态",
+    "ch.badge2Sub":  "成功交付",
+    "ch.scrollHint": "向下滑动",
   },
 };
 
@@ -136,11 +166,20 @@ function applyTranslations(lang) {
   const dict = translations[lang];
   if (!dict) return;
   currentLang = lang;
+  document.dispatchEvent(new CustomEvent("langchange"));
   document.querySelectorAll("[data-i18n]").forEach((el) => {
     const key = el.getAttribute("data-i18n");
     if (dict[key] !== undefined) el.textContent = dict[key];
   });
   document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+  // Keep cinematic lang overlay in sync
+  const chCur = document.querySelector(".ch-lang-cur");
+  if (chCur) chCur.textContent = lang === "zh" ? "中文" : "EN";
+  document.querySelectorAll(".ch-lang-opt").forEach((o) => {
+    const match = o.getAttribute("data-lang") === lang;
+    o.classList.toggle("ch-lang-opt--active", match);
+    o.setAttribute("aria-selected", String(match));
+  });
 }
 
 // ── Language switcher ────────────────────────────────────────────
@@ -187,6 +226,41 @@ if (langBtn && langDropdown) {
   });
 }
 
+// ── Cinematic hero language overlay ─────────────────────────────
+const chLangBtn = document.querySelector(".ch-lang-btn");
+const chLangDrop = document.querySelector(".ch-lang-drop");
+const chLangOpts = document.querySelectorAll(".ch-lang-opt");
+
+if (chLangBtn && chLangDrop) {
+  chLangBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isOpen = !chLangDrop.hidden;
+    chLangDrop.hidden = isOpen;
+    chLangBtn.setAttribute("aria-expanded", String(!isOpen));
+  });
+
+  chLangOpts.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const lang = btn.getAttribute("data-lang");
+      applyTranslations(lang);
+      if (langCurrent) langCurrent.textContent = lang === "zh" ? "中文" : "EN";
+      langOptions.forEach((o) => {
+        o.classList.toggle("lang-option--active", o.getAttribute("data-lang") === lang);
+        o.setAttribute("aria-selected", String(o.getAttribute("data-lang") === lang));
+      });
+      chLangDrop.hidden = true;
+      chLangBtn.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!chLangDrop.hidden && !chLangBtn.contains(e.target) && !chLangDrop.contains(e.target)) {
+      chLangDrop.hidden = true;
+      chLangBtn.setAttribute("aria-expanded", "false");
+    }
+  });
+}
+
 // ── Year ─────────────────────────────────────────────────────────
 const yearElement = document.getElementById("year");
 if (yearElement) yearElement.textContent = new Date().getFullYear();
@@ -230,3 +304,60 @@ const updateHeaderState = () => {
 
 updateHeaderState();
 window.addEventListener("scroll", updateHeaderState, { passive: true });
+
+
+// ── Cinematic Hero ────────────────────────────────────────────
+(function initCinematicHero() {
+  var container = document.getElementById("cinematic-hero");
+  if (!container || typeof gsap === "undefined") return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function playIntro() {
+    gsap.set(".ch-text-track", { autoAlpha: 0, y: 50, scale: 0.88, filter: "blur(18px)", rotationX: -18 });
+    gsap.set(".ch-text-days",  { autoAlpha: 1, clipPath: "inset(0 100% 0 0)" });
+    gsap.timeline({ delay: 0.3 })
+      .to(".ch-text-track", {
+        duration: 1.8, autoAlpha: 1, y: 0, scale: 1,
+        filter: "blur(0px)", rotationX: 0, ease: "expo.out",
+      })
+      .to(".ch-text-days", {
+        duration: 1.4, clipPath: "inset(0 0% 0 0)", ease: "power4.inOut",
+      }, "-=1.0");
+  }
+
+  // ── Intro: text animates in on load ─────────────────────────
+  playIntro();
+
+  // Re-play intro whenever language changes
+  document.addEventListener("langchange", playIntro);
+
+  // ── Scroll-out: text zooms & fades as user scrolls down ─────
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: container,
+      start: "top top",
+      end: "+=900",
+      pin: true,
+      scrub: 0.8,
+      anticipatePin: 1,
+    },
+  })
+    .to(".ch-hero-text", {
+      scale: 1.12, autoAlpha: 0, filter: "blur(22px)", y: -40,
+      ease: "power2.inOut", duration: 1,
+    })
+    .to(".ch-bg-grid", {
+      opacity: 0, ease: "power2.inOut", duration: 1,
+    }, "<")
+    .to(".ch-film-grain", {
+      opacity: 0, ease: "power2.inOut", duration: 1,
+    }, "<")
+    .to(".ch-scroll-hint", {
+      autoAlpha: 0, ease: "power2.inOut", duration: 0.5,
+    }, "<")
+    .to(".ch-lang-overlay", {
+      autoAlpha: 0, ease: "power2.inOut", duration: 0.5,
+    }, "<");
+
+})();

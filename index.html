@@ -17,6 +17,50 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+
+    <!-- ═══════════════════════════════════════════
+         CINEMATIC HERO  (full-viewport scroll intro)
+    ═══════════════════════════════════════════════ -->
+    <div id="cinematic-hero" class="cinematic-hero" aria-hidden="true">
+
+      <!-- Environment overlays -->
+      <div class="ch-film-grain"></div>
+      <div class="ch-bg-grid"></div>
+
+      <!-- Language switcher overlay (top-right) -->
+      <div class="ch-lang-overlay">
+        <button class="ch-lang-btn" aria-expanded="false" aria-haspopup="listbox" aria-label="Switch language">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <span class="ch-lang-cur">EN</span>
+          <svg class="ch-lang-chev" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="ch-lang-drop" hidden role="listbox">
+          <button class="ch-lang-opt ch-lang-opt--active" data-lang="en" role="option" aria-selected="true">English</button>
+          <button class="ch-lang-opt" data-lang="zh" role="option" aria-selected="false">中文</button>
+        </div>
+      </div>
+
+      <!-- Hero taglines -->
+      <div class="ch-hero-text">
+        <h1 class="ch-text-track" data-i18n="ch.tagline1">Trade Built for</h1>
+        <h1 class="ch-text-days" data-i18n="ch.tagline2">Cross-Border Growth.</h1>
+      </div>
+
+      <!-- Scroll hint -->
+      <div class="ch-scroll-hint">
+        <span class="ch-scroll-text" data-i18n="ch.scrollHint">Scroll</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </div>
+
+    </div>
+    <!-- /cinematic-hero -->
+
     <header class="site-header">
       <div class="container header-inner">
         <a href="#top" class="brand" aria-label="TYB International home">
@@ -239,6 +283,8 @@
       </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>
