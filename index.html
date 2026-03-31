@@ -17,70 +17,86 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="film-grain" aria-hidden="true"></div>
-
     <header class="site-header">
       <div class="container header-inner">
         <a href="#top" class="brand" aria-label="TYB International home">
-          <span class="brand-mark">TYB</span>
+          <img src="./TYB_logo.jpeg" alt="TYB" class="brand-logo" />
           <span class="brand-text">INTERNATIONAL</span>
         </a>
 
-        <button
-          class="menu-toggle"
-          type="button"
-          aria-label="Toggle navigation"
-          aria-expanded="false"
-          aria-controls="site-nav"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <div class="header-right">
+          <nav id="site-nav" class="site-nav">
+            <a href="#about" data-i18n="nav.about">About</a>
+            <a href="#sectors" data-i18n="nav.sectors">Sectors</a>
+            <a href="#network" data-i18n="nav.network">Network</a>
+            <a href="#sustainability" data-i18n="nav.sustainability">Sustainability</a>
+            <a href="#contact" class="nav-contact" data-i18n="nav.contact">Contact</a>
+          </nav>
 
-        <nav id="site-nav" class="site-nav">
-          <a href="#about">About</a>
-          <a href="#sectors">Sectors</a>
-          <a href="#network">Network</a>
-          <a href="#sustainability">Sustainability</a>
-          <a href="#contact" class="nav-contact">Contact</a>
-        </nav>
-      </div>
+          <div class="lang-switcher">
+            <button class="lang-btn" aria-expanded="false" aria-haspopup="listbox" aria-label="Switch language">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+              <span class="lang-current">EN</span>
+              <svg class="lang-chevron" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="lang-dropdown" hidden role="listbox">
+              <button class="lang-option lang-option--active" data-lang="en" role="option" aria-selected="true">English</button>
+              <button class="lang-option" data-lang="zh" role="option" aria-selected="false">中文</button>
+            </div>
+          </div>
+
+          <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="site-nav"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
     </header>
 
     <main id="top">
       <section class="hero section">
         <div class="container hero-layout">
-          <div class="hero-copy" data-reveal>
-            <p class="kicker">Bangkok-Based Trading &amp; Investment</p>
-            <h1>Resource Trade Built for Cross-Border Growth.</h1>
-            <p class="lede">
+          <div class="hero-copy">
+            <p class="kicker" data-i18n="hero.kicker">Bangkok-Based Trading &amp; Investment</p>
+            <h1 data-i18n="hero.headline">Resource Trade Built for Cross-Border Growth.</h1>
+            <p class="lede" data-i18n="hero.body">
               TYB International connects Southeast Asia's resource strength with global demand through disciplined sourcing,
               strategic partnerships, and sustainable market expansion.
             </p>
             <div class="hero-actions">
-              <a class="btn btn-solid" href="#contact">Start a Partnership</a>
-              <a class="btn btn-outline" href="#sectors">Explore Products</a>
+              <a class="btn btn-solid" href="#contact" data-i18n="hero.cta">Start a Partnership</a>
+              <a class="btn btn-outline" href="#sectors" data-i18n="hero.ctaSecondary">Explore Products</a>
             </div>
           </div>
 
-          <aside class="hero-panel" data-reveal>
-            <h2>Since 2023</h2>
-            <p>
+          <aside class="hero-panel">
+            <h2 data-i18n="hero.since">Since 2023</h2>
+            <p data-i18n="hero.sinceBody">
               We have expanded from regional commodity trade into international markets spanning Asia and beyond.
             </p>
             <ul class="hero-stats" aria-label="TYB key metrics">
               <li>
                 <strong>8</strong>
-                <span>Core commodity lines</span>
+                <span data-i18n="hero.stat1Label">Core commodity lines</span>
               </li>
               <li>
                 <strong>5+</strong>
-                <span>Trade segments</span>
+                <span data-i18n="hero.stat2Label">Trade segments</span>
               </li>
               <li>
                 <strong>Asia+</strong>
-                <span>Cross-border corridors</span>
+                <span data-i18n="hero.stat3Label">Cross-border corridors</span>
               </li>
             </ul>
           </aside>
@@ -89,16 +105,16 @@
 
       <section id="about" class="section">
         <div class="container two-column">
-          <div class="section-intro" data-reveal>
-            <p class="kicker">Who We Are</p>
-            <h2>Regional Insight. Global Outlook.</h2>
+          <div class="section-intro">
+            <p class="kicker" data-i18n="about.kicker">Who We Are</p>
+            <h2 data-i18n="about.headline">Regional Insight. Global Outlook.</h2>
           </div>
-          <div class="copy-stack" data-reveal>
-            <p>
+          <div class="copy-stack">
+            <p data-i18n="about.body1">
               TYB International is a Bangkok-based trading and investment company specializing in metals, rubber, chemicals,
               commodities, and cross-border commerce.
             </p>
-            <p>
+            <p data-i18n="about.body2">
               With trusted regional partners and disciplined execution, we create reliable supply pathways that support
               industrial buyers, processors, and distributors in evolving global markets.
             </p>
@@ -106,43 +122,43 @@
         </div>
       </section>
 
-      <section id="sectors" class="section section-dark">
+      <section id="sectors" class="section section-alt">
         <div class="container">
-          <div class="section-intro" data-reveal>
-            <p class="kicker">What We Trade</p>
-            <h2>High-Value Commodities Across Strategic Sectors</h2>
+          <div class="section-intro">
+            <p class="kicker" data-i18n="sectors.kicker">What We Trade</p>
+            <h2 data-i18n="sectors.headline">High-Value Commodities Across Strategic Sectors</h2>
           </div>
 
           <div class="sector-grid">
-            <article class="sector-card" data-reveal>
+            <article class="sector-card">
               <p class="sector-index">01</p>
-              <h3>Metals</h3>
-              <p>Copper, aluminum, zinc, and tungsten for industrial demand.</p>
+              <h3 data-i18n="sectors.0.title">Metals</h3>
+              <p data-i18n="sectors.0.desc">Copper, aluminum, zinc, and tungsten for industrial demand.</p>
             </article>
-            <article class="sector-card" data-reveal>
+            <article class="sector-card">
               <p class="sector-index">02</p>
-              <h3>Rubber</h3>
-              <p>Natural rubber flows for manufacturing and regional export channels.</p>
+              <h3 data-i18n="sectors.1.title">Rubber</h3>
+              <p data-i18n="sectors.1.desc">Natural rubber flows for manufacturing and regional export channels.</p>
             </article>
-            <article class="sector-card" data-reveal>
+            <article class="sector-card">
               <p class="sector-index">03</p>
-              <h3>Chemicals</h3>
-              <p>Reliable chemical sourcing with quality-focused partner networks.</p>
+              <h3 data-i18n="sectors.2.title">Chemicals</h3>
+              <p data-i18n="sectors.2.desc">Reliable chemical sourcing with quality-focused partner networks.</p>
             </article>
-            <article class="sector-card" data-reveal>
+            <article class="sector-card">
               <p class="sector-index">04</p>
-              <h3>Palm Oil</h3>
-              <p>Structured commodity movement aligned to demand cycles.</p>
+              <h3 data-i18n="sectors.3.title">Palm Oil</h3>
+              <p data-i18n="sectors.3.desc">Structured commodity movement aligned to demand cycles.</p>
             </article>
-            <article class="sector-card" data-reveal>
+            <article class="sector-card">
               <p class="sector-index">05</p>
-              <h3>Agricultural Products</h3>
-              <p>Regional agricultural trade with logistics-ready procurement.</p>
+              <h3 data-i18n="sectors.4.title">Agricultural Products</h3>
+              <p data-i18n="sectors.4.desc">Regional agricultural trade with logistics-ready procurement.</p>
             </article>
-            <article class="sector-card" data-reveal>
+            <article class="sector-card">
               <p class="sector-index">06</p>
-              <h3>Cross-Border Commerce</h3>
-              <p>Transaction and logistics execution across Asian trade routes.</p>
+              <h3 data-i18n="sectors.5.title">Cross-Border Commerce</h3>
+              <p data-i18n="sectors.5.desc">Transaction and logistics execution across Asian trade routes.</p>
             </article>
           </div>
         </div>
@@ -150,65 +166,51 @@
 
       <section id="network" class="section">
         <div class="container network-layout">
-          <div data-reveal>
-            <p class="kicker">Trade Network</p>
-            <h2>Building Sustainable Corridors Across Asia and Beyond</h2>
+          <div class="section-intro">
+            <p class="kicker" data-i18n="network.kicker">Trade Network</p>
+            <h2 data-i18n="network.headline">Building Sustainable Corridors Across Asia and Beyond</h2>
           </div>
 
-          <div class="network-map" data-reveal aria-hidden="true">
-            <span class="node node-bkk">Bangkok</span>
-            <span class="node node-sea">Southeast Asia</span>
-            <span class="node node-global">Global Markets</span>
-            <span class="route route-one"></span>
-            <span class="route route-two"></span>
-          </div>
-
-          <div class="ticker" aria-label="Commodity focus areas" data-reveal>
-            <div class="ticker-track">
-              <span>Copper</span>
-              <span>Aluminum</span>
-              <span>Zinc</span>
-              <span>Tungsten</span>
-              <span>Rubber</span>
-              <span>Palm Oil</span>
-              <span>Chemicals</span>
-              <span>Agricultural Products</span>
-              <span>Copper</span>
-              <span>Aluminum</span>
-              <span>Zinc</span>
-              <span>Tungsten</span>
-              <span>Rubber</span>
-              <span>Palm Oil</span>
-              <span>Chemicals</span>
-              <span>Agricultural Products</span>
+          <div class="network-grid">
+            <div class="network-item">
+              <h3 data-i18n="network.0.title">Headquarters</h3>
+              <p data-i18n="network.0.desc">Bangkok, Thailand — our base of operations for sourcing, logistics coordination, and regional partnerships across Southeast Asia.</p>
+            </div>
+            <div class="network-item">
+              <h3 data-i18n="network.1.title">Regional Reach</h3>
+              <p data-i18n="network.1.desc">Active trade relationships across Southeast Asia, with established commodity flows into broader Asian and international markets.</p>
+            </div>
+            <div class="network-item">
+              <h3 data-i18n="network.2.title">Global Channels</h3>
+              <p data-i18n="network.2.desc">Connecting regional supply to global industrial buyers, processors, and distributors across metals, rubber, chemicals, and agricultural sectors.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="sustainability" class="section section-dark">
+      <section id="sustainability" class="section section-alt">
         <div class="container">
-          <div class="section-intro" data-reveal>
-            <p class="kicker">Our Commitment</p>
-            <h2>Growth with Long-Term Market Responsibility</h2>
+          <div class="section-intro">
+            <p class="kicker" data-i18n="sustainability.kicker">Our Commitment</p>
+            <h2 data-i18n="sustainability.headline">Growth with Long-Term Market Responsibility</h2>
           </div>
 
           <div class="pillar-grid">
-            <article class="pillar" data-reveal>
-              <h3>Partner Integrity</h3>
-              <p>
+            <article class="pillar">
+              <h3 data-i18n="sustainability.0.title">Partner Integrity</h3>
+              <p data-i18n="sustainability.0.desc">
                 We prioritize vetted partners and transparent trade practices across every transaction.
               </p>
             </article>
-            <article class="pillar" data-reveal>
-              <h3>Supply Stability</h3>
-              <p>
+            <article class="pillar">
+              <h3 data-i18n="sustainability.1.title">Supply Stability</h3>
+              <p data-i18n="sustainability.1.desc">
                 We reduce volatility by combining regional intelligence with disciplined sourcing.
               </p>
             </article>
-            <article class="pillar" data-reveal>
-              <h3>Sustainable Networks</h3>
-              <p>
+            <article class="pillar">
+              <h3 data-i18n="sustainability.2.title">Sustainable Networks</h3>
+              <p data-i18n="sustainability.2.desc">
                 We are building trade systems designed to endure environmental and market pressures.
               </p>
             </article>
@@ -217,14 +219,14 @@
       </section>
 
       <section id="contact" class="section">
-        <div class="container" data-reveal>
+        <div class="container">
           <div class="contact-panel">
-            <p class="kicker">Contact</p>
-            <h2>Partner with TYB International</h2>
-            <p>
+            <p class="kicker" data-i18n="contact.kicker">Contact</p>
+            <h2 data-i18n="contact.headline">Partner with TYB International</h2>
+            <p data-i18n="contact.body">
               Connect with our team to discuss sourcing, investment, and cross-border trade opportunities.
             </p>
-            <a class="btn btn-solid" href="mailto:cenquiries@tyb-int.com">enquiries@tyb-int.com</a>
+            <a class="btn btn-solid" href="mailto:enquiries@tyb-int.com">enquiries@tyb-int.com</a>
           </div>
         </div>
       </section>
@@ -232,8 +234,8 @@
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p>TYB International | Bangkok, Thailand</p>
-        <p>&copy; <span id="year"></span> TYB International. All rights reserved.</p>
+        <p data-i18n="footer.location">TYB International | Bangkok, Thailand</p>
+        <p>&copy; <span id="year"></span> <span data-i18n="footer.rights">TYB International. All rights reserved.</span></p>
       </div>
     </footer>
 
