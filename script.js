@@ -9,7 +9,7 @@ const translations = {
 
     "hero.kicker": "Bangkok-Based Trading & Investment",
     "hero.headline": "Resource Trade Built for Cross-Border Growth.",
-    "hero.body": "TYB International connects Southeast Asia\u2019s resource strength with global demand through disciplined sourcing, strategic partnerships, and sustainable market expansion.",
+    "hero.body": "TYB Holdings connects Southeast Asia\u2019s resource strength with global demand through disciplined sourcing, strategic partnerships, and sustainable market expansion.",
     "hero.cta": "Start a Partnership",
     "hero.ctaSecondary": "Explore Products",
     "hero.since": "Since 2023",
@@ -20,7 +20,7 @@ const translations = {
 
     "about.kicker": "Who We Are",
     "about.headline": "Regional Insight. Global Outlook.",
-    "about.body1": "TYB International is a Bangkok-based trading and investment company specializing in metals, rubber, chemicals, commodities, and cross-border commerce.",
+    "about.body1": "TYB Holdings is a Bangkok-based trading and investment company specializing in metals, rubber, chemicals, commodities, and cross-border commerce.",
     "about.body2": "With trusted regional partners and disciplined execution, we create reliable supply pathways that support industrial buyers, processors, and distributors in evolving global markets.",
 
     "sectors.kicker": "What We Trade",
@@ -57,21 +57,21 @@ const translations = {
     "sustainability.2.desc": "We are building trade systems designed to endure environmental and market pressures.",
 
     "contact.kicker": "Contact",
-    "contact.headline": "Partner with TYB International",
+    "contact.headline": "Partner with TYB Holdings",
     "contact.body": "Connect with our team to discuss sourcing, investment, and cross-border trade opportunities.",
 
-    "footer.location": "TYB International | Bangkok, Thailand",
-    "footer.rights": "TYB International. All rights reserved.",
+    "footer.location": "TYB Holdings | Bangkok, Thailand",
+    "footer.rights": "TYB Holdings. All rights reserved.",
 
     "ch.tagline1":   "Trade Built for",
     "ch.tagline2":   "Cross-Border Growth.",
     "ch.ctaHeading": "Start Trading.",
-    "ch.ctaDesc":    "Partner with TYB International for reliable commodity trade across Southeast Asia and global markets.",
+    "ch.ctaDesc":    "Partner with TYB Holdings for reliable commodity trade across Southeast Asia and global markets.",
     "ch.ctaBtn1":    "Start a Partnership",
     "ch.ctaBtn2":    "Explore Products",
     "ch.metricLabel":"Trade Partners",
     "ch.cardHeading":"Global Commodity Trade, Redefined.",
-    "ch.cardDesc":   "TYB International connects Southeast Asia\u2019s resource strength with global demand through disciplined sourcing, strategic partnerships, and sustainable market expansion.",
+    "ch.cardDesc":   "TYB Holdings connects Southeast Asia\u2019s resource strength with global demand through disciplined sourcing, strategic partnerships, and sustainable market expansion.",
     "ch.badge1Title":"New Trade Route",
     "ch.badge1Sub":  "Milestone reached",
     "ch.badge2Title":"Partner Update",

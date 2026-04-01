@@ -109,7 +109,7 @@ export function Header() {
                 <a href="#top" className="flex items-center gap-2.5 text-foreground no-underline">
                     <img
                         src="/TYB_logo.jpeg"
-                        alt="TYB International"
+                        alt="TYB Holdings"
                         className="h-7 w-auto object-contain"
                     />
                     <span className="text-muted-foreground text-[0.62rem] font-medium tracking-[0.18em] uppercase leading-none hidden sm:block">

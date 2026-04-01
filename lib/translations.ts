@@ -13,7 +13,7 @@ export const translations = {
         hero: {
             kicker: 'Bangkok-Based Trading & Investment',
             headline: 'Resource Trade Built for Cross-Border Growth.',
-            body: "TYB International connects Southeast Asia's resource strength with global demand through disciplined sourcing, strategic partnerships, and sustainable market expansion.",
+            body: "TYB Holdings connects Southeast Asia's resource strength with global demand through disciplined sourcing, strategic partnerships, and sustainable market expansion.",
             cta: 'Start a Partnership',
             ctaSecondary: 'Explore Products',
             since: 'Since 2023',
@@ -25,7 +25,7 @@ export const translations = {
         about: {
             kicker: 'Who We Are',
             headline: 'Regional Insight. Global Outlook.',
-            body1: 'TYB International is a Bangkok-based trading and investment company specializing in metals, rubber, chemicals, commodities, and cross-border commerce.',
+            body1: 'TYB Holdings is a Bangkok-based trading and investment company specializing in metals, rubber, chemicals, commodities, and cross-border commerce.',
             body2: 'With trusted regional partners and disciplined execution, we create reliable supply pathways that support industrial buyers, processors, and distributors in evolving global markets.',
         },
         sectors: {
@@ -69,12 +69,12 @@ export const translations = {
         },
         contact: {
             kicker: 'Contact',
-            headline: 'Partner with TYB International',
+            headline: 'Partner with TYB Holdings',
             body: 'Connect with our team to discuss sourcing, investment, and cross-border trade opportunities.',
         },
         footer: {
-            location: 'TYB International | Bangkok, Thailand',
-            rights: 'TYB International. All rights reserved.',
+            location: 'TYB Holdings | Bangkok, Thailand',
+            rights: 'TYB Holdings. All rights reserved.',
         },
     },
     zh: {
