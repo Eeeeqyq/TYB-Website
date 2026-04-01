@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://eeeeqyq.github.io/TYB-Website/sitemap.xml

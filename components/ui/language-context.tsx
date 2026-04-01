@@ -1,6 +1,8 @@
 'use client';
 import React from 'react';
-import { translations, Language, Translations } from '@/lib/translations';
+import { translations, Language } from '@/lib/translations';
+
+type Translations = typeof translations[Language];
 
 type LanguageContextType = {
     language: Language;

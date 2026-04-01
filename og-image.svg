@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">TYB International Open Graph Image</title>
+  <desc id="desc">Social share banner for TYB International.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1324"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <text x="84" y="230" fill="#f8fafc" font-family="Arial, Helvetica, sans-serif" font-size="88" font-weight="700">TYB International</text>
+  <text x="84" y="310" fill="#cbd5e1" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="500">Trade Across Asia and Beyond</text>
+  <text x="84" y="392" fill="#94a3b8" font-family="Arial, Helvetica, sans-serif" font-size="30">Bangkok-based trading and investment partner</text>
+</svg>

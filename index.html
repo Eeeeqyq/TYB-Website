@@ -7,6 +7,24 @@
       name="description"
       content="TYB International is a Bangkok-based trading and investment company specializing in metals, rubber, chemicals, commodities, and cross-border commerce."
     />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://eeeeqyq.github.io/TYB-Website/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="TYB International" />
+    <meta property="og:title" content="TYB International | Trade Across Asia and Beyond" />
+    <meta
+      property="og:description"
+      content="Bangkok-based trading and investment across metals, rubber, chemicals, commodities, and cross-border commerce."
+    />
+    <meta property="og:url" content="https://eeeeqyq.github.io/TYB-Website/" />
+    <meta property="og:image" content="https://eeeeqyq.github.io/TYB-Website/og-image.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="TYB International | Trade Across Asia and Beyond" />
+    <meta
+      name="twitter:description"
+      content="TYB International connects Southeast Asia's resource strength with global demand through disciplined sourcing."
+    />
+    <meta name="twitter:image" content="https://eeeeqyq.github.io/TYB-Website/og-image.svg" />
     <title>TYB International | Trade Across Asia and Beyond</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,6 +33,25 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "TYB International",
+        "url": "https://eeeeqyq.github.io/TYB-Website/",
+        "logo": "https://eeeeqyq.github.io/TYB-Website/tyb-logo.svg",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "email": "enquiries@tyb-int.com"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Bangkok",
+          "addressCountry": "TH"
+        }
+      }
+    </script>
   </head>
   <body>
 
@@ -144,6 +181,34 @@
               </li>
             </ul>
           </aside>
+        </div>
+      </section>
+
+      <!-- ── Global Locations ── -->
+      <section class="gl-section">
+        <div class="container">
+
+          <div class="gl-header">
+            <span class="gl-badge">Locations</span>
+            <h2 class="gl-headline">We operate across a global network</h2>
+            <p class="gl-desc">
+              Our business brings together an international team based in more than 50 locations worldwide.<br>
+              We work with producers and customers in over 150 countries.
+            </p>
+          </div>
+
+          <div class="gl-map-wrap">
+            <svg id="world-map" xmlns="http://www.w3.org/2000/svg" aria-label="World map showing TYB International locations"></svg>
+            <div id="gl-tooltip" class="gl-tooltip" hidden role="tooltip">
+              <strong class="gl-tip-name"></strong>
+              <span class="gl-tip-detail"></span>
+            </div>
+          </div>
+
+          <div class="gl-cta-wrap">
+            <a href="#contact" class="gl-cta-btn">Find our offices</a>
+          </div>
+
         </div>
       </section>
 
@@ -286,5 +351,212 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="./script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+    <script>
+    /* ═══════════════════════════════════════════
+       GLOBAL LOCATIONS MAP
+       Edit LOCATIONS to add / remove offices.
+    ════════════════════════════════════════════ */
+    const LOCATIONS = [
+      { name: 'Bangkok',     detail: 'Thailand',      lat:  13.75,  lng: 100.52 },
+      { name: 'Kuala Lumpur',detail: 'Malaysia',      lat:   3.14,  lng: 101.69 },
+      { name: 'Singapore',   detail: 'Singapore',     lat:   1.35,  lng: 103.82 },
+      { name: 'Ho Chi Minh', detail: 'Vietnam',       lat:  10.82,  lng: 106.63 },
+      { name: 'Hong Kong',   detail: 'Hong Kong',     lat:  22.32,  lng: 114.17 },
+      { name: 'Beijing',     detail: 'China',         lat:  39.91,  lng: 116.39 },
+      { name: 'Seoul',       detail: 'Korea',         lat:  37.57,  lng: 126.98 },
+      { name: 'Almaty',      detail: 'Kazakhstan',    lat:  43.26,  lng:  76.95 },
+      { name: 'Istanbul',    detail: 'Turkey',        lat:  41.01,  lng:  28.95 },
+      { name: 'Belgrade',    detail: 'Serbia',        lat:  44.82,  lng:  20.46 },
+      { name: 'Vienna',      detail: 'Austria',       lat:  48.21,  lng:  16.37 },
+      { name: 'Zurich',      detail: 'Switzerland',   lat:  47.38,  lng:   8.54 },
+    ];
+
+    (async function initWorldMap() {
+      const svgEl  = document.getElementById('world-map');
+      const tip    = document.getElementById('gl-tooltip');
+      const tipName   = tip.querySelector('.gl-tip-name');
+      const tipDetail = tip.querySelector('.gl-tip-detail');
+      if (!svgEl) return;
+
+      /* ── fetch world topology ── */
+      let world;
+      try {
+        world = await d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json');
+      } catch (_) { return; }
+
+      const countries = topojson.feature(world, world.objects.countries);
+      const graticule = d3.geoGraticule();
+
+      /* ── dimensions ── */
+      const W = svgEl.clientWidth || svgEl.parentElement.clientWidth || 960;
+      const H = Math.round(W * 0.52);
+
+      const projection = d3.geoNaturalEarth1()
+        .scale(W / 6.28)
+        .translate([W / 2, H / 2]);
+
+      const path = d3.geoPath().projection(projection);
+
+      const svg = d3.select(svgEl)
+        .attr('viewBox', `0 0 ${W} ${H}`)
+        .attr('preserveAspectRatio', 'xMidYMid meet');
+
+      /* ── defs: gradient + glow filter ── */
+      const defs = svg.append('defs');
+
+      defs.append('linearGradient')
+        .attr('id', 'markerStroke')
+        .attr('x1', '0%').attr('y1', '0%')
+        .attr('x2', '100%').attr('y2', '100%')
+        .selectAll('stop')
+        .data([
+          { offset: '0%',   color: '#0c1a36' },
+          { offset: '100%', color: '#d4aa4a' },
+        ])
+        .join('stop')
+        .attr('offset', d => d.offset)
+        .attr('stop-color', d => d.color);
+
+      const glow = defs.append('filter')
+        .attr('id', 'markerGlow')
+        .attr('x', '-60%').attr('y', '-60%')
+        .attr('width', '220%').attr('height', '220%');
+      glow.append('feGaussianBlur')
+        .attr('in', 'SourceGraphic')
+        .attr('stdDeviation', '2.5')
+        .attr('result', 'blur');
+      glow.append('feColorMatrix')
+        .attr('in', 'blur').attr('type', 'matrix')
+        .attr('values', '0 0 0 0 0.05  0 0 0 0 0.10  0 0 0 0 0.21  0 0 0 0.65 0')
+        .attr('result', 'coloredBlur');
+      const merge = glow.append('feMerge');
+      merge.append('feMergeNode').attr('in', 'coloredBlur');
+      merge.append('feMergeNode').attr('in', 'SourceGraphic');
+
+      /* ── sphere background ── */
+      svg.append('path')
+        .datum({ type: 'Sphere' })
+        .attr('d', path)
+        .attr('fill', '#e8eef8');
+
+      /* ── graticule ── */
+      svg.append('path')
+        .datum(graticule())
+        .attr('d', path)
+        .attr('fill', 'none')
+        .attr('stroke', '#ccd6e8')
+        .attr('stroke-width', 0.25);
+
+      /* ── countries ── */
+      svg.append('g')
+        .selectAll('path')
+        .data(countries.features)
+        .join('path')
+        .attr('d', path)
+        .attr('fill', '#d4dff0')
+        .attr('stroke', '#b8c8de')
+        .attr('stroke-width', 0.3);
+
+      /* ── outline ── */
+      svg.append('path')
+        .datum({ type: 'Sphere' })
+        .attr('d', path)
+        .attr('fill', 'none')
+        .attr('stroke', '#a0b4cc')
+        .attr('stroke-width', 0.6);
+
+      /* ── markers ── */
+      const markerG = svg.append('g').attr('class', 'gl-markers');
+
+      LOCATIONS.forEach(loc => {
+        const coords = projection([loc.lng, loc.lat]);
+        if (!coords) return;
+        const [x, y] = coords;
+
+        /* outer group: positions the marker; inner group: scales on hover */
+        const outer = markerG.append('g')
+          .attr('transform', `translate(${x},${y})`);
+
+        const g = outer.append('g')
+          .attr('class', 'gl-marker')
+          .style('cursor', 'pointer');
+
+        /* pulse ring — fixed r=5, CSS scale animation expands it */
+        g.append('circle')
+          .attr('class', 'gl-pulse')
+          .attr('r', 5)
+          .attr('fill', 'none')
+          .attr('stroke', '#b8912a')
+          .attr('stroke-width', 1.2)
+          .attr('opacity', 0.6);
+
+        /* glow halo */
+        g.append('circle')
+          .attr('r', 5)
+          .attr('fill', 'rgba(12,26,54,0.08)')
+          .attr('filter', 'url(#markerGlow)');
+
+        /* gradient stroke ring */
+        g.append('circle')
+          .attr('r', 4.5)
+          .attr('fill', 'white')
+          .attr('stroke', 'url(#markerStroke)')
+          .attr('stroke-width', 1.6);
+
+        /* center dot */
+        g.append('circle')
+          .attr('r', 1.8)
+          .attr('fill', 'url(#markerStroke)');
+
+        /* invisible hit area for easier clicking on mobile */
+        g.append('circle')
+          .attr('r', 10)
+          .attr('fill', 'transparent');
+
+        /* tooltip events — no r mutation, CSS handles all visual changes */
+        outer
+          .on('mouseenter', function(event) {
+            tipName.textContent   = loc.name;
+            tipDetail.textContent = loc.detail;
+            tip.hidden = false;
+            positionTip(event);
+          })
+          .on('mousemove', positionTip)
+          .on('mouseleave', function() {
+            tip.hidden = true;
+          })
+          .on('click', function(event) {
+            tipName.textContent   = loc.name;
+            tipDetail.textContent = loc.detail;
+            tip.hidden = false;
+            positionTip(event);
+            event.stopPropagation();
+          });
+      });
+
+      document.addEventListener('click', () => { tip.hidden = true; });
+
+      function positionTip(event) {
+        const wrap = svgEl.parentElement.getBoundingClientRect();
+        const tx = event.clientX - wrap.left + 14;
+        const ty = event.clientY - wrap.top  - 12;
+        tip.style.left = tx + 'px';
+        tip.style.top  = ty + 'px';
+      }
+
+      /* ── re-render on resize ── */
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          svgEl.innerHTML = '';
+          initWorldMap();
+        }, 220);
+      });
+
+    })();
+    </script>
   </body>
 </html>
