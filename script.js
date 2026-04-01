@@ -94,7 +94,7 @@ const translations = {
 
     "hero.kicker": "曼谷总部贸易与投资",
     "hero.headline": "为跨境增长而生的资源贸易。",
-    "hero.body": "TYB国际连接东南亚的资源优势与全球需求，通过严格的采购、战略合作伙伴关系和可持续的市场扩张推动发展。",
+    "hero.body": "TYB控股连接东南亚的资源优势与全球需求，通过严格的采购、战略合作伙伴关系和可持续的市场扩张推动发展。",
     "hero.cta": "开始合作",
     "hero.ctaSecondary": "探索产品",
     "hero.since": "自2023年起",
@@ -105,7 +105,7 @@ const translations = {
 
     "about.kicker": "关于我们",
     "about.headline": "区域洞察，全球视野。",
-    "about.body1": "TYB国际是一家总部位于曼谷的贸易与投资公司，专注于金属、橡胶、化工品、大宗商品及跨境贸易。",
+    "about.body1": "TYB控股是一家总部位于曼谷的贸易与投资公司，专注于金属、橡胶、化工品、大宗商品及跨境贸易。",
     "about.body2": "凭借可信赖的区域合作伙伴和严格的执行力，我们为在不断变化的全球市场中的工业采购商、加工商和分销商打造可靠的供应通道。",
 
     "sectors.kicker": "我们的贸易品类",
@@ -142,21 +142,21 @@ const translations = {
     "sustainability.2.desc": "我们正在构建能够承受环境和市场压力的持久贸易体系。",
 
     "contact.kicker": "联系我们",
-    "contact.headline": "与TYB国际携手合作",
+    "contact.headline": "与TYB控股携手合作",
     "contact.body": "联系我们的团队，探讨采购、投资及跨境贸易合作机会。",
 
-    "footer.location": "TYB国际 | 泰国曼谷",
-    "footer.rights": "TYB国际。版权所有。",
+    "footer.location": "TYB控股 | 泰国曼谷",
+    "footer.rights": "TYB控股。版权所有。",
 
     "ch.tagline1":   "为跨境而生的",
     "ch.tagline2":   "资源贸易。",
     "ch.ctaHeading": "开始合作。",
-    "ch.ctaDesc":    "与TYB国际合作，实现可靠的东南亚及全球大宗商品贸易。",
+    "ch.ctaDesc":    "与TYB控股合作，实现可靠的东南亚及全球大宗商品贸易。",
     "ch.ctaBtn1":    "开始合作",
     "ch.ctaBtn2":    "探索产品",
     "ch.metricLabel":"贸易合作伙伴",
     "ch.cardHeading":"全球大宗商品贸易，重新定义。",
-    "ch.cardDesc":   "TYB国际连接东南亚的资源优势与全球需求，通过严格的采购、战略合作伙伴关系和可持续的市场扩张推动发展。",
+    "ch.cardDesc":   "TYB控股连接东南亚的资源优势与全球需求，通过严格的采购、战略合作伙伴关系和可持续的市场扩张推动发展。",
     "ch.badge1Title":"新贸易路线",
     "ch.badge1Sub":  "里程碑达成",
     "ch.badge2Title":"合作伙伴动态",

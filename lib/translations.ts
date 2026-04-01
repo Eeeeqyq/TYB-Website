@@ -89,7 +89,7 @@ export const translations = {
         hero: {
             kicker: '曼谷总部贸易与投资',
             headline: '为跨境增长而生的资源贸易。',
-            body: 'TYB国际连接东南亚的资源优势与全球需求，通过严格的采购、战略合作伙伴关系和可持续的市场扩张推动发展。',
+            body: 'TYB控股连接东南亚的资源优势与全球需求，通过严格的采购、战略合作伙伴关系和可持续的市场扩张推动发展。',
             cta: '开始合作',
             ctaSecondary: '探索产品',
             since: '自2023年起',
@@ -101,7 +101,7 @@ export const translations = {
         about: {
             kicker: '关于我们',
             headline: '区域洞察，全球视野。',
-            body1: 'TYB国际是一家总部位于曼谷的贸易与投资公司，专注于金属、橡胶、化工品、大宗商品及跨境贸易。',
+            body1: 'TYB控股是一家总部位于曼谷的贸易与投资公司，专注于金属、橡胶、化工品、大宗商品及跨境贸易。',
             body2: '凭借可信赖的区域合作伙伴和严格的执行力，我们为在不断变化的全球市场中的工业采购商、加工商和分销商打造可靠的供应通道。',
         },
         sectors: {
@@ -145,12 +145,12 @@ export const translations = {
         },
         contact: {
             kicker: '联系我们',
-            headline: '与TYB国际携手合作',
+            headline: '与TYB控股携手合作',
             body: '联系我们的团队，探讨采购、投资及跨境贸易合作机会。',
         },
         footer: {
-            location: 'TYB国际 | 泰国曼谷',
-            rights: 'TYB国际。版权所有。',
+            location: 'TYB控股 | 泰国曼谷',
+            rights: 'TYB控股。版权所有。',
         },
     },
 } as const;
