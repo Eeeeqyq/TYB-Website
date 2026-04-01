@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://eeeeqyq.github.io/TYB-Website/sitemap.xml
+# Block any build artefacts if they ever appear
+Disallow: /.next/
+Disallow: /node_modules/
+
+Sitemap: https://tybholdings.com/sitemap.xml

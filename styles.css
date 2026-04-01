@@ -46,9 +46,11 @@ body {
 }
 
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 50;
+  left: 0;
+  width: 100%;
+  z-index: 100;
   background: rgba(244, 246, 251, 0.96);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(8px);
@@ -58,6 +60,11 @@ body {
 .site-header.is-scrolled {
   background: rgba(244, 246, 251, 0.99);
   border-bottom-color: var(--line-strong);
+}
+
+/* Offset for fixed header so main content isn't hidden underneath */
+main {
+  padding-top: 78px;
 }
 
 .header-inner {
@@ -224,6 +231,7 @@ body {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   font-weight: 600;
+  animation: gold-breathe 5s ease-in-out infinite;
 }
 
 h1,
@@ -280,13 +288,21 @@ h3 {
 }
 
 .btn-solid {
-  background: var(--navy);
+  background: linear-gradient(
+    105deg,
+    var(--navy) 0%, var(--navy) 35%,
+    var(--gold-light) 50%,
+    var(--navy) 65%, var(--navy) 100%
+  );
+  background-size: 300% 100%;
   border-color: var(--navy);
   color: #ffffff;
+  animation: shimmer-sweep 5s linear infinite;
 }
 
 .btn-solid:hover,
 .btn-solid:focus-visible {
+  animation: none;
   background: var(--navy-mid);
   border-color: var(--navy-mid);
 }
@@ -295,10 +311,12 @@ h3 {
   background: transparent;
   border-color: var(--navy);
   color: var(--navy);
+  animation: border-pulse 5s ease-in-out infinite;
 }
 
 .btn-outline:hover,
 .btn-outline:focus-visible {
+  animation: none;
   background: var(--navy);
   color: #ffffff;
 }
@@ -501,6 +519,10 @@ h3 {
     min-height: 70px;
   }
 
+  main {
+    padding-top: 70px;
+  }
+
   .menu-toggle {
     display: inline-block;
   }
@@ -546,6 +568,37 @@ h3 {
   .pillar-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   COLOR VIBRATION KEYFRAMES
+   Three independent layers — all pause on hover, all respect
+   prefers-reduced-motion at the bottom of this file.
+═══════════════════════════════════════════════════════════════ */
+
+/* Gold shimmer sweep: a bright glint travels left → right */
+@keyframes shimmer-sweep {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+/* Gold breathe: label color slowly cycles muted ↔ gold */
+@keyframes gold-breathe {
+  0%, 100% { color: var(--muted); }
+  50%       { color: var(--gold);  }
+}
+
+/* Gradient drift: hero headline gradient floats diagonally */
+@keyframes gradient-drift {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+/* Border pulse: outline button border glints gold */
+@keyframes border-pulse {
+  0%, 100% { border-color: var(--navy); }
+  50%       { border-color: var(--gold-light); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -803,7 +856,13 @@ h3 {
   align-items: center;
   justify-content: center;
   padding: 0.78rem 2rem;
-  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 50%, var(--gold) 100%);
+  background: linear-gradient(
+    105deg,
+    var(--navy) 0%, var(--navy-mid) 30%,
+    var(--gold-light) 50%,
+    var(--navy-mid) 70%, var(--navy) 100%
+  );
+  background-size: 300% 100%;
   color: #ffffff;
   text-decoration: none;
   font-size: 0.72rem;
@@ -812,20 +871,21 @@ h3 {
   text-transform: uppercase;
   border-radius: 100px;
   border: none;
-  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 4px 18px rgba(12, 26, 54, 0.35);
+  animation: shimmer-sweep 5s linear infinite;
 }
 
 .gl-cta-btn:hover,
 .gl-cta-btn:focus-visible {
-  opacity: 0.88;
+  animation: none;
+  background: var(--navy-mid);
   transform: translateY(-1px);
   box-shadow: 0 8px 28px rgba(12, 26, 54, 0.45);
 }
 
 .gl-cta-btn:active {
   transform: translateY(0);
-  opacity: 1;
 }
 
 /* ── Scroll hint ── */
@@ -888,11 +948,11 @@ h3 {
   text-shadow:
     0 10px 30px rgba(12,26,54,0.18),
     0 2px 4px rgba(12,26,54,0.08);
-  visibility: hidden; /* GSAP autoAlpha controls this */
 }
 
 .ch-text-days {
-  background: linear-gradient(180deg, var(--navy) 0%, var(--gold) 100%);
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 30%, var(--gold) 60%, var(--gold-light) 80%, var(--navy) 100%);
+  background-size: 250% 250%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -900,5 +960,6 @@ h3 {
   filter:
     drop-shadow(0 10px 20px rgba(12,26,54,0.14))
     drop-shadow(0 2px 4px rgba(12,26,54,0.08));
+  animation: gradient-drift 8s ease infinite;
 }
 

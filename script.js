@@ -77,6 +77,12 @@ const translations = {
     "ch.badge2Title":"Partner Update",
     "ch.badge2Sub":  "Delivered successfully",
     "ch.scrollHint": "Scroll",
+
+    "gl.badge":    "Locations",
+    "gl.headline": "We operate across a global network",
+    "gl.desc1":    "Our business brings together an international team based in more than 50 locations worldwide.",
+    "gl.desc2":    "We work with producers and customers in over 150 countries.",
+    "gl.cta":      "Find our offices",
   },
 
   zh: {
@@ -156,6 +162,12 @@ const translations = {
     "ch.badge2Title":"合作伙伴动态",
     "ch.badge2Sub":  "成功交付",
     "ch.scrollHint": "向下滑动",
+
+    "gl.badge":    "业务分布",
+    "gl.headline": "我们在全球网络中广泛布局",
+    "gl.desc1":    "我们的业务汇聚了来自全球50多个地区的国际团队。",
+    "gl.desc2":    "我们与150多个国家的生产商和客户开展合作。",
+    "gl.cta":      "查找我们的办事处",
   },
 };
 
@@ -314,12 +326,12 @@ window.addEventListener("scroll", updateHeaderState, { passive: true });
   gsap.registerPlugin(ScrollTrigger);
 
   function playIntro() {
-    gsap.set(".ch-text-track", { autoAlpha: 0, y: 50, scale: 0.88, filter: "blur(18px)", rotationX: -18 });
-    gsap.set(".ch-text-days",  { autoAlpha: 1, clipPath: "inset(0 100% 0 0)" });
+    gsap.set(".ch-text-track", { y: 30, scale: 0.95, filter: "blur(8px)" });
+    gsap.set(".ch-text-days",  { clipPath: "inset(0 100% 0 0)" });
     gsap.timeline({ delay: 0.3 })
       .to(".ch-text-track", {
-        duration: 1.8, autoAlpha: 1, y: 0, scale: 1,
-        filter: "blur(0px)", rotationX: 0, ease: "expo.out",
+        duration: 1.4, y: 0, scale: 1,
+        filter: "blur(0px)", ease: "expo.out",
       })
       .to(".ch-text-days", {
         duration: 1.4, clipPath: "inset(0 0% 0 0)", ease: "power4.inOut",

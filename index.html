@@ -1,31 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ── Favicon (browser tab icon) ──────────────────────────── -->
+    <link rel="icon" type="image/svg+xml" href="./tyb-logo.svg" />
+    <link rel="icon" type="image/jpeg" href="./TYB_logo.jpeg" />
+    <link rel="apple-touch-icon" href="./TYB_logo.jpeg" />
+
+    <!-- ── Primary SEO ─────────────────────────────────────────── -->
+    <title>TYB Holdings | Global Trading Company &amp; International Sourcing</title>
     <meta
       name="description"
-      content="TYB International is a Bangkok-based trading and investment company specializing in metals, rubber, chemicals, commodities, and cross-border commerce."
+      content="TYB Holdings is a Bangkok-based global trading company specialising in commodity trading, international sourcing, and supply chain solutions across Asia, Europe, and beyond."
+    />
+    <meta
+      name="keywords"
+      content="global trading company, international sourcing, supply chain solutions, commodity trading, import and export services, cross-border trade, Bangkok trading company, metals trading, rubber trading, chemicals supply"
     />
     <meta name="robots" content="index,follow,max-image-preview:large" />
-    <link rel="canonical" href="https://eeeeqyq.github.io/TYB-Website/" />
+    <link rel="canonical" href="https://tybholdings.com/" />
+
+    <!-- ── Open Graph (LinkedIn, Facebook, WhatsApp previews) ───── -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="TYB International" />
-    <meta property="og:title" content="TYB International | Trade Across Asia and Beyond" />
+    <meta property="og:site_name" content="TYB Holdings" />
+    <meta property="og:title" content="TYB Holdings | Global Trading Company &amp; International Sourcing" />
     <meta
       property="og:description"
-      content="Bangkok-based trading and investment across metals, rubber, chemicals, commodities, and cross-border commerce."
+      content="Bangkok-based global trading company specialising in commodity trading, international sourcing, and supply chain solutions across Asia and beyond."
     />
-    <meta property="og:url" content="https://eeeeqyq.github.io/TYB-Website/" />
-    <meta property="og:image" content="https://eeeeqyq.github.io/TYB-Website/og-image.svg" />
+    <meta property="og:url" content="https://tybholdings.com/" />
+    <meta property="og:image" content="https://tybholdings.com/og-image.svg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_GB" />
+
+    <!-- ── Twitter / X card ─────────────────────────────────────── -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="TYB International | Trade Across Asia and Beyond" />
+    <meta name="twitter:title" content="TYB Holdings | Global Trading Company &amp; International Sourcing" />
     <meta
       name="twitter:description"
-      content="TYB International connects Southeast Asia's resource strength with global demand through disciplined sourcing."
+      content="TYB Holdings connects Southeast Asia's resource strength with global demand through disciplined sourcing, strategic partnerships, and sustainable market expansion."
     />
-    <meta name="twitter:image" content="https://eeeeqyq.github.io/TYB-Website/og-image.svg" />
-    <title>TYB International | Trade Across Asia and Beyond</title>
+    <meta name="twitter:image" content="https://tybholdings.com/og-image.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -33,23 +51,90 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
+    <noscript>
+      <style>
+        .ch-text-track,
+        .ch-text-days {
+          opacity: 1 !important;
+          visibility: visible !important;
+          filter: none !important;
+          transform: none !important;
+        }
+        .ch-text-days {
+          clip-path: none !important;
+        }
+      </style>
+    </noscript>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "TYB International",
-        "url": "https://eeeeqyq.github.io/TYB-Website/",
-        "logo": "https://eeeeqyq.github.io/TYB-Website/tyb-logo.svg",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "sales",
-          "email": "enquiries@tyb-int.com"
-        },
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Bangkok",
-          "addressCountry": "TH"
-        }
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://tybholdings.com/#organization",
+            "name": "TYB Holdings",
+            "alternateName": "TYB International",
+            "url": "https://tybholdings.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://tybholdings.com/TYB_logo.jpeg",
+              "width": 400,
+              "height": 120
+            },
+            "description": "TYB Holdings is a Bangkok-based global trading company specialising in commodity trading, international sourcing, and supply chain solutions across Asia, Europe, and beyond.",
+            "foundingDate": "2023",
+            "areaServed": "Worldwide",
+            "knowsAbout": [
+              "Commodity Trading",
+              "International Sourcing",
+              "Supply Chain Solutions",
+              "Import and Export Services",
+              "Cross-Border Trade",
+              "Metals Trading",
+              "Rubber Trading",
+              "Chemicals Supply"
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "sales",
+              "email": "enquiries@tyb-int.com",
+              "availableLanguage": ["English", "Chinese"]
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Bangkok",
+              "addressCountry": "TH"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://tybholdings.com/#website",
+            "url": "https://tybholdings.com/",
+            "name": "TYB Holdings",
+            "publisher": { "@id": "https://tybholdings.com/#organization" },
+            "inLanguage": ["en", "zh"]
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://tybholdings.com/#webpage",
+            "url": "https://tybholdings.com/",
+            "name": "TYB Holdings | Global Trading Company & International Sourcing",
+            "isPartOf": { "@id": "https://tybholdings.com/#website" },
+            "about": { "@id": "https://tybholdings.com/#organization" },
+            "description": "TYB Holdings is a Bangkok-based global trading company specialising in commodity trading, international sourcing, and supply chain solutions across Asia and beyond.",
+            "breadcrumb": {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://tybholdings.com/"
+                }
+              ]
+            }
+          }
+        ]
       }
     </script>
   </head>
@@ -58,11 +143,11 @@
     <!-- ═══════════════════════════════════════════
          CINEMATIC HERO  (full-viewport scroll intro)
     ═══════════════════════════════════════════════ -->
-    <div id="cinematic-hero" class="cinematic-hero" aria-hidden="true">
+    <div id="cinematic-hero" class="cinematic-hero">
 
       <!-- Environment overlays -->
-      <div class="ch-film-grain"></div>
-      <div class="ch-bg-grid"></div>
+      <div class="ch-film-grain" aria-hidden="true"></div>
+      <div class="ch-bg-grid" aria-hidden="true"></div>
 
       <!-- Language switcher overlay (top-right) -->
       <div class="ch-lang-overlay">
@@ -101,8 +186,8 @@
     <header class="site-header">
       <div class="container header-inner">
         <a href="#top" class="brand" aria-label="TYB International home">
-          <img src="./TYB_logo.jpeg" alt="TYB" class="brand-logo" />
-          <span class="brand-text">INTERNATIONAL</span>
+          <img src="./TYB_logo.jpeg" alt="TYB Holdings — Global Trading Company" class="brand-logo" />
+          <span class="brand-text">HOLDINGS</span>
         </a>
 
         <div class="header-right">
@@ -149,11 +234,11 @@
       <section class="hero section">
         <div class="container hero-layout">
           <div class="hero-copy">
-            <p class="kicker" data-i18n="hero.kicker">Bangkok-Based Trading &amp; Investment</p>
-            <h1 data-i18n="hero.headline">Resource Trade Built for Cross-Border Growth.</h1>
+            <p class="kicker" data-i18n="hero.kicker">Bangkok-Based Global Trading &amp; Supply Chain Solutions</p>
+            <h1 data-i18n="hero.headline">International Sourcing &amp; Commodity Trading Built for Cross-Border Growth.</h1>
             <p class="lede" data-i18n="hero.body">
-              TYB International connects Southeast Asia's resource strength with global demand through disciplined sourcing,
-              strategic partnerships, and sustainable market expansion.
+              TYB Holdings is a Bangkok-based global trading company connecting Southeast Asia's resource strength with worldwide demand —
+              through disciplined commodity sourcing, end-to-end import and export services, and strategic supply chain solutions.
             </p>
             <div class="hero-actions">
               <a class="btn btn-solid" href="#contact" data-i18n="hero.cta">Start a Partnership</a>
@@ -189,11 +274,11 @@
         <div class="container">
 
           <div class="gl-header">
-            <span class="gl-badge">Locations</span>
-            <h2 class="gl-headline">We operate across a global network</h2>
+            <span class="gl-badge" data-i18n="gl.badge">Locations</span>
+            <h2 class="gl-headline" data-i18n="gl.headline">We operate across a global network</h2>
             <p class="gl-desc">
-              Our business brings together an international team based in more than 50 locations worldwide.<br>
-              We work with producers and customers in over 150 countries.
+              <span data-i18n="gl.desc1">Our business brings together an international team based in more than 50 locations worldwide.</span><br>
+              <span data-i18n="gl.desc2">We work with producers and customers in over 150 countries.</span>
             </p>
           </div>
 
@@ -206,7 +291,7 @@
           </div>
 
           <div class="gl-cta-wrap">
-            <a href="#contact" class="gl-cta-btn">Find our offices</a>
+            <a href="#contact" class="gl-cta-btn" data-i18n="gl.cta">Find our offices</a>
           </div>
 
         </div>
@@ -359,19 +444,24 @@
        Edit LOCATIONS to add / remove offices.
     ════════════════════════════════════════════ */
     const LOCATIONS = [
-      { name: 'Bangkok',     detail: 'Thailand',      lat:  13.75,  lng: 100.52 },
-      { name: 'Kuala Lumpur',detail: 'Malaysia',      lat:   3.14,  lng: 101.69 },
-      { name: 'Singapore',   detail: 'Singapore',     lat:   1.35,  lng: 103.82 },
-      { name: 'Ho Chi Minh', detail: 'Vietnam',       lat:  10.82,  lng: 106.63 },
-      { name: 'Hong Kong',   detail: 'Hong Kong',     lat:  22.32,  lng: 114.17 },
-      { name: 'Beijing',     detail: 'China',         lat:  39.91,  lng: 116.39 },
-      { name: 'Seoul',       detail: 'Korea',         lat:  37.57,  lng: 126.98 },
-      { name: 'Almaty',      detail: 'Kazakhstan',    lat:  43.26,  lng:  76.95 },
-      { name: 'Istanbul',    detail: 'Turkey',        lat:  41.01,  lng:  28.95 },
-      { name: 'Belgrade',    detail: 'Serbia',        lat:  44.82,  lng:  20.46 },
-      { name: 'Vienna',      detail: 'Austria',       lat:  48.21,  lng:  16.37 },
-      { name: 'Zurich',      detail: 'Switzerland',   lat:  47.38,  lng:   8.54 },
+      { name: { en: 'Bangkok',      zh: '曼谷'    }, detail: { en: 'Thailand',    zh: '泰国'    }, lat:  13.75, lng: 100.52 },
+      { name: { en: 'Kuala Lumpur', zh: '吉隆坡'  }, detail: { en: 'Malaysia',    zh: '马来西亚' }, lat:   3.14, lng: 101.69 },
+      { name: { en: 'Singapore',    zh: '新加坡'  }, detail: { en: 'Singapore',   zh: '新加坡'  }, lat:   1.35, lng: 103.82 },
+      { name: { en: 'Ho Chi Minh',  zh: '胡志明市' }, detail: { en: 'Vietnam',     zh: '越南'    }, lat:  10.82, lng: 106.63 },
+      { name: { en: 'Hong Kong',    zh: '香港'    }, detail: { en: 'Hong Kong',   zh: '香港'    }, lat:  22.32, lng: 114.17 },
+      { name: { en: 'Beijing',      zh: '北京'    }, detail: { en: 'China',       zh: '中国'    }, lat:  39.91, lng: 116.39 },
+      { name: { en: 'Seoul',        zh: '首尔'    }, detail: { en: 'Korea',       zh: '韩国'    }, lat:  37.57, lng: 126.98 },
+      { name: { en: 'Almaty',       zh: '阿拉木图' }, detail: { en: 'Kazakhstan',  zh: '哈萨克斯坦' }, lat: 43.26, lng:  76.95 },
+      { name: { en: 'Istanbul',     zh: '伊斯坦布尔' }, detail: { en: 'Turkey',    zh: '土耳其'  }, lat:  41.01, lng:  28.95 },
+      { name: { en: 'Belgrade',     zh: '贝尔格莱德' }, detail: { en: 'Serbia',    zh: '塞尔维亚' }, lat: 44.82, lng:  20.46 },
+      { name: { en: 'Vienna',       zh: '维也纳'  }, detail: { en: 'Austria',     zh: '奥地利'  }, lat:  48.21, lng:  16.37 },
+      { name: { en: 'Zurich',       zh: '苏黎世'  }, detail: { en: 'Switzerland', zh: '瑞士'    }, lat:  47.38, lng:   8.54 },
     ];
+
+    function locText(loc, field) {
+      const lang = (typeof currentLang !== 'undefined' ? currentLang : 'en');
+      return loc[field][lang] || loc[field].en;
+    }
 
     (async function initWorldMap() {
       const svgEl  = document.getElementById('world-map');
@@ -518,8 +608,8 @@
         /* tooltip events — no r mutation, CSS handles all visual changes */
         outer
           .on('mouseenter', function(event) {
-            tipName.textContent   = loc.name;
-            tipDetail.textContent = loc.detail;
+            tipName.textContent   = locText(loc, 'name');
+            tipDetail.textContent = locText(loc, 'detail');
             tip.hidden = false;
             positionTip(event);
           })
@@ -528,8 +618,8 @@
             tip.hidden = true;
           })
           .on('click', function(event) {
-            tipName.textContent   = loc.name;
-            tipDetail.textContent = loc.detail;
+            tipName.textContent   = locText(loc, 'name');
+            tipDetail.textContent = locText(loc, 'detail');
             tip.hidden = false;
             positionTip(event);
             event.stopPropagation();
