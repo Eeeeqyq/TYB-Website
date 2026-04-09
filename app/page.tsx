@@ -2,7 +2,6 @@
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/components/ui/language-context';
-import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
 import { WorldMap } from '@/components/ui/world-map';
 
@@ -35,11 +34,7 @@ export default function Home() {
                  .fromTo('#hero-ctas',
                     { opacity: 0, y: 16 },
                     { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
-                    '-=0.4')
-                 .fromTo('#hero-stats',
-                    { opacity: 0, y: 20 },
-                    { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
-                    '-=0.3');
+                    '-=0.4');
             }, heroRef);
         });
         return () => { ctx?.revert(); };
@@ -84,7 +79,7 @@ export default function Home() {
                         {t.hero.body}
                     </p>
 
-                    <div id="hero-ctas" className="flex flex-wrap gap-4 mb-24">
+                    <div id="hero-ctas" className="flex flex-wrap gap-4">
                         <Link
                             href="/contact"
                             className="inline-flex items-center gap-2 rounded-lg text-sm font-semibold h-12 px-7 bg-[#C9A84C] text-white hover:bg-[#B8922E] transition-all duration-200 hover:shadow-xl"
@@ -98,27 +93,6 @@ export default function Home() {
                         >
                             {t.hero.ctaSecondary}
                         </Link>
-                    </div>
-
-                    <div id="hero-stats" className="grid grid-cols-2 md:grid-cols-4 overflow-hidden rounded-xl border border-white/10">
-                        {[
-                            { value: t.hero.stat1, label: t.hero.stat1Label },
-                            { value: t.hero.stat2, label: t.hero.stat2Label },
-                            { value: t.hero.stat3, label: t.hero.stat3Label },
-                            { value: t.hero.stat4, label: t.hero.stat4Label },
-                        ].map((stat, i) => (
-                            <div
-                                key={i}
-                                className={cn(
-                                    'bg-white/5 backdrop-blur-sm p-6 text-center',
-                                    i < 3 && 'border-r border-white/10',
-                                    i >= 2 && 'border-t border-white/10 md:border-t-0',
-                                )}
-                            >
-                                <div className="text-2xl md:text-3xl font-bold text-white mb-1 whitespace-nowrap">{stat.value}</div>
-                                <div className="text-[0.7rem] text-[#C9A84C]/70 uppercase tracking-widest">{stat.label}</div>
-                            </div>
-                        ))}
                     </div>
                 </div>
             </section>
