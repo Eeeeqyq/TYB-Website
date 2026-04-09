@@ -81,86 +81,105 @@ export function Header() {
     const isActive = (href: string) =>
         href === '/' ? pathname === '/' : pathname.startsWith(href);
 
+    // Lock body scroll when mobile menu is open
     React.useEffect(() => {
         document.body.style.overflow = open ? 'hidden' : '';
         return () => { document.body.style.overflow = ''; };
     }, [open]);
 
+    // Close mobile menu on route change
+    React.useEffect(() => {
+        setOpen(false);
+    }, [pathname]);
+
     return (
-        <header
-            className={cn(
-                'sticky top-0 z-50 w-full transition-all duration-200',
-                scrolled
-                    ? 'bg-white/95 supports-[backdrop-filter]:bg-white/80 backdrop-blur-md border-b border-border shadow-sm'
-                    : 'bg-white border-b border-border',
-            )}
-        >
-            <nav className="container mx-auto max-w-7xl px-4 md:px-6 h-16 flex items-center justify-between">
-
-                {/* Logo */}
-                <Link href="/" className="flex items-center gap-3 text-foreground no-underline flex-shrink-0">
-                    <img
-                        src="/TYB_logo.jpeg"
-                        alt="TYB Holdings"
-                        className="h-9 w-auto object-contain"
-                        style={{ imageRendering: 'crisp-edges' }}
-                    />
-                    <div className="hidden sm:block leading-tight">
-                        <div className="text-sm font-bold text-foreground tracking-tight">TYB Holdings</div>
-                        <div className="text-[0.58rem] font-medium tracking-[0.16em] uppercase text-muted-foreground">
-                            {t.nav.logoSubtitle}
-                        </div>
-                    </div>
-                </Link>
-
-                {/* Desktop nav */}
-                <div className="hidden items-center gap-1 md:flex">
-                    {links.map((link) => (
-                        <Link
-                            key={link.href}
-                            href={link.href}
-                            className={cn(
-                                buttonVariants({ variant: 'ghost', size: 'sm' }),
-                                'px-4 text-sm font-medium transition-colors',
-                                isActive(link.href)
-                                    ? 'text-foreground bg-accent/60'
-                                    : 'text-muted-foreground hover:text-foreground',
-                            )}
-                        >
-                            {link.label}
-                        </Link>
-                    ))}
-                    <div className="w-px h-5 bg-border mx-2" />
-                    <LanguageSwitcher />
-                    <Button size="sm" className="ml-1 px-5" asChild>
-                        <Link href="/contact">{t.nav.contactUs}</Link>
-                    </Button>
-                </div>
-
-                {/* Mobile controls */}
-                <div className="flex items-center gap-1 md:hidden">
-                    <LanguageSwitcher />
-                    <Button size="icon" variant="outline" onClick={() => setOpen(!open)}>
-                        <MenuToggleIcon open={open} className="size-5" duration={300} />
-                    </Button>
-                </div>
-            </nav>
-
-            {/* Mobile menu */}
-            <div
+        <>
+            {/*
+             * The <header> is intentionally kept as a clean wrapper with NO
+             * backdrop-filter children inside it.
+             *
+             * backdrop-filter creates a new CSS containing block which breaks
+             * position:fixed descendants — so the mobile menu MUST live outside
+             * this element (see sibling div below).
+             */}
+            <header
                 className={cn(
-                    'bg-background fixed top-16 right-0 bottom-0 left-0 z-50 flex flex-col overflow-hidden border-t md:hidden',
-                    open ? 'block' : 'hidden',
+                    'sticky top-0 z-50 w-full transition-all duration-200',
+                    scrolled
+                        ? 'bg-white/95 supports-[backdrop-filter]:bg-white/80 backdrop-blur-md border-b border-border shadow-sm'
+                        : 'bg-white border-b border-border',
                 )}
             >
-                <div
-                    data-slot={open ? 'open' : 'closed'}
-                    className={cn(
-                        'data-[slot=open]:animate-in data-[slot=open]:zoom-in-95 data-[slot=closed]:animate-out data-[slot=closed]:zoom-out-95 ease-out',
-                        'flex h-full w-full flex-col p-5',
-                    )}
-                >
-                    <div className="grid gap-y-1">
+                <nav className="container mx-auto max-w-7xl px-4 md:px-6 h-16 flex items-center justify-between">
+
+                    {/* Logo */}
+                    <Link href="/" className="flex items-center gap-3 text-foreground no-underline flex-shrink-0">
+                        <img
+                            src="/TYB_logo.jpeg"
+                            alt="TYB Holdings"
+                            className="h-9 w-auto object-contain"
+                            style={{ imageRendering: 'crisp-edges' }}
+                        />
+                        <div className="hidden sm:block leading-tight">
+                            <div className="text-sm font-bold text-foreground tracking-tight">TYB Holdings</div>
+                            <div className="text-[0.58rem] font-medium tracking-[0.16em] uppercase text-muted-foreground">
+                                {t.nav.logoSubtitle}
+                            </div>
+                        </div>
+                    </Link>
+
+                    {/* Desktop nav */}
+                    <div className="hidden items-center gap-1 md:flex">
+                        {links.map((link) => (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className={cn(
+                                    buttonVariants({ variant: 'ghost', size: 'sm' }),
+                                    'px-4 text-sm font-medium transition-colors',
+                                    isActive(link.href)
+                                        ? 'text-foreground bg-accent/60'
+                                        : 'text-muted-foreground hover:text-foreground',
+                                )}
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
+                        <div className="w-px h-5 bg-border mx-2" />
+                        <LanguageSwitcher />
+                        <Button size="sm" className="ml-1 px-5" asChild>
+                            <Link href="/contact">{t.nav.contactUs}</Link>
+                        </Button>
+                    </div>
+
+                    {/* Mobile hamburger */}
+                    <div className="flex items-center gap-1 md:hidden">
+                        <LanguageSwitcher />
+                        <Button size="icon" variant="outline" onClick={() => setOpen((v) => !v)}>
+                            <MenuToggleIcon open={open} className="size-5" duration={300} />
+                        </Button>
+                    </div>
+                </nav>
+            </header>
+
+            {/*
+             * Mobile menu — rendered as a SIBLING to <header>, not inside it.
+             *
+             * Keeping it outside <header> ensures that backdrop-filter on the
+             * header (applied when scrolled) cannot create a new containing
+             * block that would mis-position this fixed overlay.
+             *
+             * z-40 keeps it below the header (z-50) but above all page content.
+             */}
+            <div
+                aria-hidden={!open}
+                className={cn(
+                    'fixed inset-0 top-16 z-40 bg-background border-t border-border md:hidden',
+                    open ? 'flex flex-col' : 'hidden',
+                )}
+            >
+                <div className="flex h-full w-full flex-col overflow-y-auto p-5">
+                    <nav className="grid gap-y-1">
                         {links.map((link) => (
                             <Link
                                 key={link.href}
@@ -174,14 +193,16 @@ export function Header() {
                                 {link.label}
                             </Link>
                         ))}
-                    </div>
+                    </nav>
                     <div className="mt-auto pt-6 border-t border-border">
                         <Button className="w-full" asChild>
-                            <Link href="/contact" onClick={() => setOpen(false)}>{t.nav.contactUs}</Link>
+                            <Link href="/contact" onClick={() => setOpen(false)}>
+                                {t.nav.contactUs}
+                            </Link>
                         </Button>
                     </div>
                 </div>
             </div>
-        </header>
+        </>
     );
 }
