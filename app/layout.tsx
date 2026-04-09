@@ -40,6 +40,20 @@ export const metadata: Metadata = {
         },
     },
 
+    icons: {
+        icon: [
+            { url: '/favicon.ico',        sizes: 'any' },
+            { url: '/favicon-16x16.png',  sizes: '16x16',  type: 'image/png' },
+            { url: '/favicon-32x32.png',  sizes: '32x32',  type: 'image/png' },
+            { url: '/icon-192.png',       sizes: '192x192', type: 'image/png' },
+            { url: '/icon-512.png',       sizes: '512x512', type: 'image/png' },
+        ],
+        apple: [
+            { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+        ],
+        shortcut: '/favicon.ico',
+    },
+
     openGraph: {
         type: 'website',
         siteName: 'TYB Holdings',
@@ -49,21 +63,21 @@ export const metadata: Metadata = {
         url: siteUrl,
         images: [
             {
-                url: '/og-image.svg',
-                width: 1200,
-                height: 630,
-                alt: 'TYB Holdings — International Business Group',
+                url: '/icon-512.png',
+                width: 512,
+                height: 512,
+                alt: 'TYB Holdings Logo',
             },
         ],
         locale: 'en_GB',
     },
 
     twitter: {
-        card: 'summary_large_image',
+        card: 'summary',
         title: 'TYB Holdings | International Business Group',
         description:
             "TYB Holdings connects Southeast Asia's resource strength with global demand through trade, partnerships, and industrial development.",
-        images: ['/og-image.svg'],
+        images: ['/icon-512.png'],
     },
 
     robots: {
@@ -78,10 +92,35 @@ export const metadata: Metadata = {
     },
 };
 
+const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'TYB Holdings',
+    url: siteUrl,
+    logo: `${siteUrl}/icon-512.png`,
+    image: `${siteUrl}/icon-512.png`,
+    description:
+        'TYB Holdings is an international business group based in Bangkok, Thailand, operating across rubber trading, metals, construction, and brand partnerships in Southeast Asia.',
+    address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Bangkok',
+        addressCountry: 'TH',
+    },
+    contactPoint: {
+        '@type': 'ContactPoint',
+        email: 'enquiries@tyb-int.com',
+        contactType: 'customer service',
+    },
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en-GB">
             <body className={inter.className}>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                />
                 <LanguageProvider>{children}</LanguageProvider>
             </body>
         </html>
