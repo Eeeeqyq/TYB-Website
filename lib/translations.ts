@@ -9,6 +9,7 @@ export const translations = {
             relationships: 'Relationships',
             contact: 'Contact',
             contactUs: 'Contact Us',
+            companyName: 'TYB Holdings',
             logoSubtitle: 'International Business Group',
         },
         map: {
@@ -217,6 +218,7 @@ export const translations = {
             relationships: '合作关系',
             contact: '联系',
             contactUs: '联系我们',
+            companyName: 'TYB控股',
             logoSubtitle: '国际商业集团',
         },
         map: {

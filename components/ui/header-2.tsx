@@ -121,7 +121,7 @@ export function Header() {
                             style={{ imageRendering: 'crisp-edges' }}
                         />
                         <div className="hidden sm:block leading-tight">
-                            <div className="text-sm font-bold text-foreground tracking-tight">TYB Holdings</div>
+                            <div className="text-sm font-bold text-foreground tracking-tight">{t.nav.companyName}</div>
                             <div className="text-[0.58rem] font-medium tracking-[0.16em] uppercase text-muted-foreground">
                                 {t.nav.logoSubtitle}
                             </div>

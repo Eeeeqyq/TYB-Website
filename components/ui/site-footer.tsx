@@ -16,7 +16,7 @@ export function SiteFooter() {
                         <div className="flex items-center gap-3 mb-6">
                             <img src="/TYB_logo.jpeg" alt="TYB Holdings" className="h-10 w-auto object-contain" />
                             <div>
-                                <div className="font-bold text-lg text-white leading-tight">TYB Holdings</div>
+                                <div className="font-bold text-lg text-white leading-tight">{t.nav.companyName}</div>
                                 <div className="text-[0.6rem] text-[#C9A84C]/60 tracking-[0.18em] uppercase mt-0.5">
                                     {t.nav.logoSubtitle}
                                 </div>
