@@ -1,31 +1,39 @@
 'use client';
 import { useEffect, useRef } from 'react';
 
-interface Location {
+interface LocationLabel {
     name: string;
     detail: string;
+}
+
+interface Location extends LocationLabel {
     lat: number;
     lng: number;
     isHQ?: boolean;
 }
 
-const LOCATIONS: Location[] = [
-    { name: 'Bangkok',         detail: 'Thailand — Headquarters',       lat: 13.75,  lng: 100.52, isHQ: true },
-    { name: 'Yangon',          detail: 'Myanmar — Rubber Operations',   lat: 16.87,  lng:  96.19 },
-    { name: 'Kuala Lumpur',    detail: 'Malaysia',                      lat:  3.14,  lng: 101.69 },
-    { name: 'Singapore',       detail: 'Singapore',                     lat:  1.35,  lng: 103.82 },
-    { name: 'Ho Chi Minh City',detail: 'Vietnam',                       lat: 10.82,  lng: 106.63 },
-    { name: 'Hong Kong',       detail: 'Hong Kong',                     lat: 22.32,  lng: 114.17 },
-    { name: 'Beijing',         detail: 'China — Primary Export Market', lat: 39.91,  lng: 116.39 },
-    { name: 'Seoul',           detail: 'South Korea',                   lat: 37.57,  lng: 126.98 },
-    { name: 'Almaty',          detail: 'Kazakhstan',                    lat: 43.26,  lng:  76.95 },
-    { name: 'Istanbul',        detail: 'Turkey',                        lat: 41.01,  lng:  28.95 },
-    { name: 'Belgrade',        detail: 'Serbia',                        lat: 44.82,  lng:  20.46 },
-    { name: 'Vienna',          detail: 'Austria',                       lat: 48.21,  lng:  16.37 },
-    { name: 'Zurich',          detail: 'Switzerland',                   lat: 47.38,  lng:   8.54 },
+// Static geographic data — names/details come from props
+const GEO: Omit<Location, 'name' | 'detail'>[] = [
+    { lat: 13.75,  lng: 100.52, isHQ: true },
+    { lat: 16.87,  lng:  96.19 },
+    { lat:  3.14,  lng: 101.69 },
+    { lat:  1.35,  lng: 103.82 },
+    { lat: 10.82,  lng: 106.63 },
+    { lat: 22.32,  lng: 114.17 },
+    { lat: 39.91,  lng: 116.39 },
+    { lat: 37.57,  lng: 126.98 },
+    { lat: 43.26,  lng:  76.95 },
+    { lat: 41.01,  lng:  28.95 },
+    { lat: 44.82,  lng:  20.46 },
+    { lat: 48.21,  lng:  16.37 },
+    { lat: 47.38,  lng:   8.54 },
 ];
 
-export function WorldMap() {
+interface WorldMapProps {
+    locations: readonly { name: string; detail: string }[];
+}
+
+export function WorldMap({ locations }: WorldMapProps) {
     const svgRef  = useRef<SVGSVGElement>(null);
     const tipRef  = useRef<HTMLDivElement>(null);
     const wrapRef = useRef<HTMLDivElement>(null);
@@ -134,6 +142,13 @@ export function WorldMap() {
             // ── Markers ──────────────────────────────────────────────────
             const markerGroup = svg.append('g');
 
+            // Merge static geo data with translated labels
+            const LOCATIONS: Location[] = GEO.map((geo, i) => ({
+                ...geo,
+                name:   locations[i]?.name   ?? '',
+                detail: locations[i]?.detail ?? '',
+            }));
+
             LOCATIONS.forEach((loc) => {
                 const coords = projection([loc.lng, loc.lat]);
                 if (!coords) return;
@@ -240,7 +255,7 @@ export function WorldMap() {
             if (hideOnClick) hideOnClick();
             if (svgEl) while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
         };
-    }, []);
+    }, [locations]);
 
     return (
         <div ref={wrapRef} className="relative w-full rounded-2xl overflow-hidden border border-border shadow-sm bg-[#dce8f8]">

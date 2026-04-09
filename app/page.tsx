@@ -7,7 +7,7 @@ import { ChevronDown, MapPin, Mail, ArrowRight } from 'lucide-react';
 import { WorldMap } from '@/components/ui/world-map';
 
 export default function Home() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const heroRef = useRef<HTMLDivElement>(null);
     const [openCategories, setOpenCategories] = useState<Set<string>>(
         new Set(['international-trade'])
@@ -46,7 +46,7 @@ export default function Home() {
             }, heroRef);
         });
         return () => { ctx?.revert(); };
-    }, []);
+    }, [language]);
 
     function toggleCategory(id: string) {
         setOpenCategories((prev) => {
@@ -98,7 +98,7 @@ export default function Home() {
                                     id="hero-line1"
                                     className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.05]"
                                 >
-                                    Building Bridges
+                                    {t.hero.line1}
                                 </h1>
                             </div>
                             <div className="overflow-hidden">
@@ -107,7 +107,7 @@ export default function Home() {
                                     className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05]"
                                     style={{ color: '#C9A84C' }}
                                 >
-                                    Between Markets.
+                                    {t.hero.line2}
                                 </h1>
                             </div>
                         </div>
@@ -204,7 +204,7 @@ export default function Home() {
                                 {t.map.body}
                             </p>
                         </div>
-                        <WorldMap />
+                        <WorldMap locations={t.map.locations} />
                     </div>
                 </section>
 
