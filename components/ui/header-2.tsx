@@ -1,5 +1,7 @@
 'use client';
 import React from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { MenuToggleIcon } from '@/components/ui/menu-toggle-icon';
@@ -34,17 +36,12 @@ function LanguageSwitcher() {
         <div ref={ref} className="relative">
             <button
                 onClick={() => setOpen((v) => !v)}
-                className={cn(
-                    buttonVariants({ variant: 'ghost', size: 'sm' }),
-                    'gap-1.5 px-3',
-                )}
+                className={cn(buttonVariants({ variant: 'ghost', size: 'sm' }), 'gap-1.5 px-3')}
                 aria-label="Switch language"
             >
                 <Globe className="h-3.5 w-3.5" />
                 <span className="text-xs font-medium">{current.short}</span>
-                <ChevronDown
-                    className={cn('h-3 w-3 transition-transform duration-200', open && 'rotate-180')}
-                />
+                <ChevronDown className={cn('h-3 w-3 transition-transform duration-200', open && 'rotate-180')} />
             </button>
 
             {open && (
@@ -52,10 +49,7 @@ function LanguageSwitcher() {
                     {options.map((opt) => (
                         <button
                             key={opt.value}
-                            onClick={() => {
-                                setLanguage(opt.value);
-                                setOpen(false);
-                            }}
+                            onClick={() => { setLanguage(opt.value); setOpen(false); }}
                             className={cn(
                                 'flex w-full items-center gap-2 px-4 py-2.5 text-sm transition-colors hover:bg-accent hover:text-accent-foreground',
                                 language === opt.value && 'bg-accent/50 font-medium',
@@ -74,14 +68,18 @@ export function Header() {
     const [open, setOpen] = React.useState(false);
     const scrolled = useScroll(10);
     const { t } = useLanguage();
+    const pathname = usePathname();
 
     const links = [
-        { label: t.nav.home, href: '#top' },
-        { label: t.nav.about, href: '#about' },
-        { label: t.nav.businesses, href: '#businesses' },
-        { label: t.nav.relationships, href: '#relationships' },
-        { label: t.nav.contact, href: '#contact' },
+        { label: t.nav.home,          href: '/' },
+        { label: t.nav.about,         href: '/about' },
+        { label: t.nav.businesses,    href: '/businesses' },
+        { label: t.nav.relationships, href: '/relationships' },
+        { label: t.nav.contact,       href: '/contact' },
     ];
+
+    const isActive = (href: string) =>
+        href === '/' ? pathname === '/' : pathname.startsWith(href);
 
     React.useEffect(() => {
         document.body.style.overflow = open ? 'hidden' : '';
@@ -99,8 +97,8 @@ export function Header() {
         >
             <nav className="container mx-auto max-w-7xl px-4 md:px-6 h-16 flex items-center justify-between">
 
-                {/* Logo + wordmark */}
-                <a href="#top" className="flex items-center gap-3 text-foreground no-underline flex-shrink-0">
+                {/* Logo */}
+                <Link href="/" className="flex items-center gap-3 text-foreground no-underline flex-shrink-0">
                     <img
                         src="/TYB_logo.jpeg"
                         alt="TYB Holdings"
@@ -113,26 +111,29 @@ export function Header() {
                             {t.nav.logoSubtitle}
                         </div>
                     </div>
-                </a>
+                </Link>
 
                 {/* Desktop nav */}
                 <div className="hidden items-center gap-1 md:flex">
-                    {links.map((link, i) => (
-                        <a
-                            key={i}
+                    {links.map((link) => (
+                        <Link
+                            key={link.href}
+                            href={link.href}
                             className={cn(
                                 buttonVariants({ variant: 'ghost', size: 'sm' }),
-                                'px-4 text-sm font-medium text-muted-foreground hover:text-foreground',
+                                'px-4 text-sm font-medium transition-colors',
+                                isActive(link.href)
+                                    ? 'text-foreground bg-accent/60'
+                                    : 'text-muted-foreground hover:text-foreground',
                             )}
-                            href={link.href}
                         >
                             {link.label}
-                        </a>
+                        </Link>
                     ))}
                     <div className="w-px h-5 bg-border mx-2" />
                     <LanguageSwitcher />
                     <Button size="sm" className="ml-1 px-5" asChild>
-                        <a href="#contact">{t.nav.contactUs}</a>
+                        <Link href="/contact">{t.nav.contactUs}</Link>
                     </Button>
                 </div>
 
@@ -161,19 +162,22 @@ export function Header() {
                 >
                     <div className="grid gap-y-1">
                         {links.map((link) => (
-                            <a
-                                key={link.label}
-                                className={buttonVariants({ variant: 'ghost', className: 'justify-start text-base font-medium' })}
+                            <Link
+                                key={link.href}
                                 href={link.href}
                                 onClick={() => setOpen(false)}
+                                className={cn(
+                                    buttonVariants({ variant: 'ghost', className: 'justify-start text-base font-medium' }),
+                                    isActive(link.href) && 'bg-accent/60 text-foreground',
+                                )}
                             >
                                 {link.label}
-                            </a>
+                            </Link>
                         ))}
                     </div>
                     <div className="mt-auto pt-6 border-t border-border">
                         <Button className="w-full" asChild>
-                            <a href="#contact" onClick={() => setOpen(false)}>{t.nav.contactUs}</a>
+                            <Link href="/contact" onClick={() => setOpen(false)}>{t.nav.contactUs}</Link>
                         </Button>
                     </div>
                 </div>

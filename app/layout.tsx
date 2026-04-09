@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { LanguageProvider } from '@/components/ui/language-context';
+import { Header } from '@/components/ui/header-2';
+import { SiteFooter } from '@/components/ui/site-footer';
 
 const inter = Inter({
     subsets: ['latin'],
@@ -121,7 +123,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
                 />
-                <LanguageProvider>{children}</LanguageProvider>
+                <LanguageProvider>
+                    <Header />
+                    <main>{children}</main>
+                    <SiteFooter />
+                </LanguageProvider>
             </body>
         </html>
     );
