@@ -1,6 +1,12 @@
 import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import { LanguageProvider } from '@/components/ui/language-context';
+
+const inter = Inter({
+    subsets: ['latin'],
+    display: 'swap',
+});
 
 const siteUrl = 'https://tybholdings.com';
 
@@ -8,22 +14,22 @@ export const metadata: Metadata = {
     metadataBase: new URL(siteUrl),
 
     title: {
-        default: 'TYB Holdings | Global Trading Company & International Sourcing',
+        default: 'TYB Holdings | International Business Group — Bangkok, Thailand',
         template: '%s | TYB Holdings',
     },
     description:
-        'TYB Holdings is a Bangkok-based global trading company specialising in commodity trading, international sourcing, and supply chain solutions across Asia, Europe, and beyond.',
+        'TYB Holdings is an international business group based in Bangkok, Thailand. Operating across rubber trading, metals, construction, and brand partnerships in Southeast Asia and beyond.',
     keywords: [
-        'global trading company',
-        'international sourcing',
-        'supply chain solutions',
-        'commodity trading',
-        'import and export services',
-        'cross-border trade',
+        'TYB Holdings',
+        'international business group',
         'Bangkok trading company',
+        'Myanmar rubber export',
+        'RSS rubber Thailand',
+        'Southeast Asia trade',
+        'cross-border commerce',
         'metals trading',
-        'rubber trading',
-        'chemicals supply',
+        'TYB constructions Myanmar',
+        'SEA market partnerships',
     ],
 
     alternates: {
@@ -37,16 +43,16 @@ export const metadata: Metadata = {
     openGraph: {
         type: 'website',
         siteName: 'TYB Holdings',
-        title: 'TYB Holdings | Global Trading Company & International Sourcing',
+        title: 'TYB Holdings | International Business Group',
         description:
-            'Bangkok-based global trading company specialising in commodity trading, international sourcing, and supply chain solutions across Asia and beyond.',
+            'Bangkok-based international business group connecting Southeast Asia resources to global markets through trade, partnerships, and industrial development.',
         url: siteUrl,
         images: [
             {
                 url: '/og-image.svg',
                 width: 1200,
                 height: 630,
-                alt: 'TYB Holdings — Global Trading Company',
+                alt: 'TYB Holdings — International Business Group',
             },
         ],
         locale: 'en_GB',
@@ -54,9 +60,9 @@ export const metadata: Metadata = {
 
     twitter: {
         card: 'summary_large_image',
-        title: 'TYB Holdings | Global Trading Company & International Sourcing',
+        title: 'TYB Holdings | International Business Group',
         description:
-            'TYB Holdings connects Southeast Asia's resource strength with global demand through disciplined commodity sourcing and end-to-end supply chain solutions.',
+            "TYB Holdings connects Southeast Asia's resource strength with global demand through trade, partnerships, and industrial development.",
         images: ['/og-image.svg'],
     },
 
@@ -75,7 +81,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en-GB">
-            <body>
+            <body className={inter.className}>
                 <LanguageProvider>{children}</LanguageProvider>
             </body>
         </html>

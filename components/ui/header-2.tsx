@@ -36,7 +36,7 @@ function LanguageSwitcher() {
                 onClick={() => setOpen((v) => !v)}
                 className={cn(
                     buttonVariants({ variant: 'ghost', size: 'sm' }),
-                    'gap-1.5 px-2',
+                    'gap-1.5 px-3',
                 )}
                 aria-label="Switch language"
             >
@@ -48,7 +48,7 @@ function LanguageSwitcher() {
             </button>
 
             {open && (
-                <div className="absolute right-0 top-full mt-1 min-w-[110px] overflow-hidden rounded-md border bg-background shadow-md z-50">
+                <div className="absolute right-0 top-full mt-1 min-w-[120px] overflow-hidden rounded-lg border bg-background shadow-lg z-50">
                     {options.map((opt) => (
                         <button
                             key={opt.value}
@@ -57,7 +57,7 @@ function LanguageSwitcher() {
                                 setOpen(false);
                             }}
                             className={cn(
-                                'flex w-full items-center gap-2 px-3 py-2 text-sm transition-colors hover:bg-accent hover:text-accent-foreground',
+                                'flex w-full items-center gap-2 px-4 py-2.5 text-sm transition-colors hover:bg-accent hover:text-accent-foreground',
                                 language === opt.value && 'bg-accent/50 font-medium',
                             )}
                         >
@@ -76,10 +76,10 @@ export function Header() {
     const { t } = useLanguage();
 
     const links = [
+        { label: t.nav.home, href: '#top' },
         { label: t.nav.about, href: '#about' },
-        { label: t.nav.sectors, href: '#sectors' },
-        { label: t.nav.network, href: '#network' },
-        { label: t.nav.sustainability, href: '#sustainability' },
+        { label: t.nav.businesses, href: '#businesses' },
+        { label: t.nav.relationships, href: '#relationships' },
         { label: t.nav.contact, href: '#contact' },
     ];
 
@@ -91,30 +91,28 @@ export function Header() {
     return (
         <header
             className={cn(
-                'sticky top-0 z-50 mx-auto w-full max-w-5xl border-b border-transparent md:rounded-md md:border md:transition-all md:ease-out',
-                {
-                    'bg-background/95 supports-[backdrop-filter]:bg-background/50 border-border backdrop-blur-lg md:top-4 md:max-w-4xl md:shadow':
-                        scrolled && !open,
-                    'bg-background/90': open,
-                },
+                'sticky top-0 z-50 w-full transition-all duration-200',
+                scrolled
+                    ? 'bg-white/95 supports-[backdrop-filter]:bg-white/80 backdrop-blur-md border-b border-border shadow-sm'
+                    : 'bg-white border-b border-border',
             )}
         >
-            <nav
-                className={cn(
-                    'flex h-14 w-full items-center justify-between px-4 md:h-12 md:transition-all md:ease-out',
-                    { 'md:px-2': scrolled },
-                )}
-            >
+            <nav className="container mx-auto max-w-7xl px-4 md:px-6 h-16 flex items-center justify-between">
+
                 {/* Logo + wordmark */}
-                <a href="#top" className="flex items-center gap-2.5 text-foreground no-underline">
+                <a href="#top" className="flex items-center gap-3 text-foreground no-underline flex-shrink-0">
                     <img
                         src="/TYB_logo.jpeg"
                         alt="TYB Holdings"
-                        className="h-7 w-auto object-contain"
+                        className="h-9 w-auto object-contain"
+                        style={{ imageRendering: 'crisp-edges' }}
                     />
-                    <span className="text-muted-foreground text-[0.62rem] font-medium tracking-[0.18em] uppercase leading-none hidden sm:block">
-                        International
-                    </span>
+                    <div className="hidden sm:block leading-tight">
+                        <div className="text-sm font-bold text-foreground tracking-tight">TYB Holdings</div>
+                        <div className="text-[0.58rem] font-medium tracking-[0.16em] uppercase text-muted-foreground">
+                            {t.nav.logoSubtitle}
+                        </div>
+                    </div>
                 </a>
 
                 {/* Desktop nav */}
@@ -122,14 +120,18 @@ export function Header() {
                     {links.map((link, i) => (
                         <a
                             key={i}
-                            className={buttonVariants({ variant: 'ghost', size: 'sm' })}
+                            className={cn(
+                                buttonVariants({ variant: 'ghost', size: 'sm' }),
+                                'px-4 text-sm font-medium text-muted-foreground hover:text-foreground',
+                            )}
                             href={link.href}
                         >
                             {link.label}
                         </a>
                     ))}
+                    <div className="w-px h-5 bg-border mx-2" />
                     <LanguageSwitcher />
-                    <Button size="sm" asChild>
+                    <Button size="sm" className="ml-1 px-5" asChild>
                         <a href="#contact">{t.nav.contactUs}</a>
                     </Button>
                 </div>
@@ -146,7 +148,7 @@ export function Header() {
             {/* Mobile menu */}
             <div
                 className={cn(
-                    'bg-background/90 fixed top-14 right-0 bottom-0 left-0 z-50 flex flex-col overflow-hidden border-y md:hidden',
+                    'bg-background fixed top-16 right-0 bottom-0 left-0 z-50 flex flex-col overflow-hidden border-t md:hidden',
                     open ? 'block' : 'hidden',
                 )}
             >
@@ -154,14 +156,14 @@ export function Header() {
                     data-slot={open ? 'open' : 'closed'}
                     className={cn(
                         'data-[slot=open]:animate-in data-[slot=open]:zoom-in-95 data-[slot=closed]:animate-out data-[slot=closed]:zoom-out-95 ease-out',
-                        'flex h-full w-full flex-col p-4',
+                        'flex h-full w-full flex-col p-5',
                     )}
                 >
                     <div className="grid gap-y-1">
                         {links.map((link) => (
                             <a
                                 key={link.label}
-                                className={buttonVariants({ variant: 'ghost', className: 'justify-start' })}
+                                className={buttonVariants({ variant: 'ghost', className: 'justify-start text-base font-medium' })}
                                 href={link.href}
                                 onClick={() => setOpen(false)}
                             >
@@ -169,7 +171,7 @@ export function Header() {
                             </a>
                         ))}
                     </div>
-                    <div className="mt-auto pt-4">
+                    <div className="mt-auto pt-6 border-t border-border">
                         <Button className="w-full" asChild>
                             <a href="#contact" onClick={() => setOpen(false)}>{t.nav.contactUs}</a>
                         </Button>
