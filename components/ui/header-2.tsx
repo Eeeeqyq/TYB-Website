@@ -28,6 +28,7 @@ function LanguageSwitcher() {
     const options: { value: Language; label: string; short: string }[] = [
         { value: 'en', label: 'English', short: 'EN' },
         { value: 'zh', label: '中文', short: '中文' },
+        { value: 'th', label: 'ภาษาไทย', short: 'ไทย' },
     ];
 
     const current = options.find((o) => o.value === language)!;
