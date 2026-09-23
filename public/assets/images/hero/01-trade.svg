@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img">
+  <defs>
+    <linearGradient id="t-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#143a63"/><stop offset="55%" stop-color="#0d2744"/><stop offset="100%" stop-color="#0A1628"/>
+    </linearGradient>
+    <linearGradient id="t-water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#10304f"/><stop offset="100%" stop-color="#081c30"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#t-sky)"/>
+  <circle cx="1210" cy="250" r="90" fill="#C9A84C" opacity="0.10"/>
+  <circle cx="1210" cy="250" r="46" fill="#C9A84C" opacity="0.16"/>
+  <g fill="#0f2b49" opacity="0.85">
+    <rect x="0" y="612" width="1600" height="288"/>
+  </g>
+  <g fill="#17395d">
+    <path d="M120 300h18v312h-18z"/><path d="M92 300h330v16H92z"/><path d="M400 316l-40 96h16l40-96z"/>
+    <path d="M404 300h18v312h-18z"/>
+  </g>
+  <g fill="#1b4066">
+    <path d="M560 268h18v344h-18z"/><path d="M532 268h340v16H532z"/><path d="M850 284l-42 100h16l42-100z"/>
+    <path d="M854 268h18v344h-18z"/>
+  </g>
+  <g fill="#1f4a76">
+    <path d="M1010 330h16v282h-16z"/><path d="M984 330h300v14H984z"/><path d="M1262 344l-36 86h14l36-86z"/>
+    <path d="M1268 330h16v282h-16z"/>
+  </g>
+  <g opacity="0.95">
+    <rect x="150" y="520" width="150" height="44" fill="#1c4a72"/><rect x="150" y="474" width="150" height="44" fill="#22597f"/>
+    <rect x="312" y="520" width="150" height="44" fill="#22597f"/><rect x="312" y="474" width="150" height="44" fill="#1c4a72"/>
+    <rect x="474" y="520" width="150" height="44" fill="#C9A84C" opacity="0.72"/><rect x="474" y="474" width="150" height="44" fill="#1c4a72"/>
+    <rect x="636" y="520" width="150" height="44" fill="#1c4a72"/><rect x="636" y="474" width="150" height="44" fill="#22597f"/>
+    <rect x="798" y="520" width="150" height="44" fill="#22597f"/>
+    <rect x="960" y="520" width="150" height="44" fill="#C9A84C" opacity="0.55"/>
+  </g>
+  <path d="M1140 560h340l-34 52h-306z" fill="#16375a"/>
+  <rect x="1300" y="512" width="96" height="48" fill="#1b4471"/>
+  <rect x="0" y="612" width="1600" height="6" fill="#C9A84C" opacity="0.22"/>
+  <g fill="#0c223c" opacity="0.55">
+    <rect x="0" y="618" width="1600" height="282"/>
+  </g>
+  <g stroke="#2a5f92" stroke-width="2" opacity="0.35">
+    <path d="M60 690h1480M60 742h1480M60 794h1480"/>
+  </g>
+</svg>

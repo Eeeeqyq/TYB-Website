@@ -40,6 +40,15 @@ export const translations = {
             body: 'Connecting Southeast Asia\'s resources to the world through disciplined trade, strategic partnerships, and industrial development.',
             cta: 'Start a Partnership',
             ctaSecondary: 'Our Businesses',
+            gallery: {
+                label: 'Business showcase',
+                items: [
+                    { title: 'International Trade',  alt: 'Illustration of a container port with gantry cranes and stacked freight' },
+                    { title: 'Rubber Operations',    alt: 'Illustration of a rubber plantation with stacked smoked sheets' },
+                    { title: 'Construction',         alt: 'Illustration of an industrial building frame under construction beside a tower crane' },
+                    { title: 'Metals',               alt: 'Illustration of steel coils and stacked metal billets in a storage yard' },
+                ],
+            },
         },
         intro: {
             kicker: 'Company Overview',
@@ -241,6 +250,15 @@ export const translations = {
             body: '通过严格的贸易、战略合作伙伴关系和产业发展，将东南亚资源连接至全球市场。',
             cta: '开始合作',
             ctaSecondary: '我们的业务',
+            gallery: {
+                label: '业务展示',
+                items: [
+                    { title: '国际贸易', alt: '集装箱码头、门式起重机与堆放货物的示意插图' },
+                    { title: '橡胶业务', alt: '橡胶种植园与堆放烟片胶的示意插图' },
+                    { title: '工程建设', alt: '塔吊旁在建工业厂房钢结构的示意插图' },
+                    { title: '金属贸易', alt: '堆场中钢卷与金属坯料的示意插图' },
+                ],
+            },
         },
         intro: {
             kicker: '公司概述',
@@ -442,6 +460,15 @@ export const translations = {
             body: 'เชื่อมโยงทรัพยากรของเอเชียตะวันออกเฉียงใต้สู่โลกผ่านการค้าที่มีวินัย ความร่วมมือเชิงกลยุทธ์ และการพัฒนาอุตสาหกรรม',
             cta: 'เริ่มต้นความร่วมมือ',
             ctaSecondary: 'ธุรกิจของเรา',
+            gallery: {
+                label: 'ภาพรวมธุรกิจ',
+                items: [
+                    { title: 'การค้าระหว่างประเทศ', alt: 'ภาพประกอบท่าเรือตู้สินค้าพร้อมเครนและกองสินค้า' },
+                    { title: 'ธุรกิจยางพารา', alt: 'ภาพประกอบสวนยางพาราและแผ่นยางรมควันที่วางซ้อนกัน' },
+                    { title: 'งานก่อสร้าง', alt: 'ภาพประกอบโครงสร้างอาคารอุตสาหกรรมระหว่างก่อสร้างข้างเครนหอสูง' },
+                    { title: 'ธุรกิจโลหะ', alt: 'ภาพประกอบขดเหล็กและแท่งโลหะที่กองอยู่ในลานเก็บ' },
+                ],
+            },
         },
         intro: {
             kicker: 'ภาพรวมบริษัท',

@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
+import { TRADE_LOCATIONS } from '@/lib/locations';
 
 interface LocationLabel {
     name: string;
@@ -12,22 +13,6 @@ interface Location extends LocationLabel {
     isHQ?: boolean;
 }
 
-// Static geographic data — names/details come from props
-const GEO: Omit<Location, 'name' | 'detail'>[] = [
-    { lat: 13.75,  lng: 100.52, isHQ: true },
-    { lat: 16.87,  lng:  96.19 },
-    { lat:  3.14,  lng: 101.69 },
-    { lat:  1.35,  lng: 103.82 },
-    { lat: 10.82,  lng: 106.63 },
-    { lat: 22.32,  lng: 114.17 },
-    { lat: 39.91,  lng: 116.39 },
-    { lat: 37.57,  lng: 126.98 },
-    { lat: 43.26,  lng:  76.95 },
-    { lat: 41.01,  lng:  28.95 },
-    { lat: 44.82,  lng:  20.46 },
-    { lat: 48.21,  lng:  16.37 },
-    { lat: 47.38,  lng:   8.54 },
-];
 
 interface WorldMapProps {
     locations: readonly { name: string; detail: string }[];
@@ -142,8 +127,8 @@ export function WorldMap({ locations }: WorldMapProps) {
             // ── Markers ──────────────────────────────────────────────────
             const markerGroup = svg.append('g');
 
-            // Merge static geo data with translated labels
-            const LOCATIONS: Location[] = GEO.map((geo, i) => ({
+            // Merge shared geo data with translated labels
+            const LOCATIONS: Location[] = TRADE_LOCATIONS.map((geo, i) => ({
                 ...geo,
                 name:   locations[i]?.name   ?? '',
                 detail: locations[i]?.detail ?? '',
